@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Amirreza's blog </title>
+    <link>https://amirrezaghaderi.com/</link>
+    <language>en-US</language>
+    <author>Amirreza Ghaderi</author>
+    <rights>Except where otherwise noted, content on this site is licensed under a Attribution-NonCommercial 4.0 International license.</rights>
+    <updated>Sat, 02 Apr 2016 00:00:00 UTC</updated>
+    
+    <item>
+      <title>Hello World!</title>
+      <link>https://amirrezaghaderi.com/blog/hello-world/</link>
+      <pubDate>April 2, 2016</pubDate>
+      <author>Amirreza Ghaderi</author>
+      <guid>https://amirrezaghaderi.com/blog/hello-world/</guid>
+      <description>&lt;p&gt;Hello there,&lt;/p&gt;
+
+&lt;p&gt;My name is Amirreza Ghaderi. I’m a software developer.&lt;/p&gt;
+
+&lt;p&gt;As the title would suggest, it&amp;rsquo;s my first post on this blog.
+I started this blog simply because i like to write. it helps me to keep my mind clear; I&amp;rsquo;m one of those people who always keeps a pen and paper around. Its not easy for me to understand or think about something, unless i write it down. It also feels good to share your knowledge with others!&lt;/p&gt;
+
+&lt;p&gt;I blogged for many years but this is my first attempt to writing a blog in English—which is not my first language. This blog will be mostly about software development or any other subject that captures my interest along the way.&lt;/p&gt;
+
+&lt;p&gt;p.s. I will probably going to use this post as my &amp;ldquo;About&amp;rdquo; page. :)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

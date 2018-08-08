@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Other on Amirreza Ghaderi</title>
+    <link>https://amirrezaghaderi.com/topic/other/</link>
+    <description>Recent content in Other on Amirreza Ghaderi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sat, 02 Apr 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://amirrezaghaderi.com/topic/other/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello World!</title>
+      <link>https://amirrezaghaderi.com/blog/hello-world/</link>
+      <pubDate>Sat, 02 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://amirrezaghaderi.com/blog/hello-world/</guid>
+      <description>Hello there,
+My name is Amirreza Ghaderi. I’m a software developer.
+As the title would suggest, it&amp;rsquo;s my first post on this blog. I started this blog simply because i like to write. it helps me to keep my mind clear; I&amp;rsquo;m one of those people who always keeps a pen and paper around. Its not easy for me to understand or think about something, unless i write it down. It also feels good to share your knowledge with others!</description>
+    </item>
+    
+  </channel>
+</rss>
