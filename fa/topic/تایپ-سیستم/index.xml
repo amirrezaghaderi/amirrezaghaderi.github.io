@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>تایپ سیستم on امیررضا قادری</title>
+    <link>https://amirrezaghaderi.ir/topic/%D8%AA%D8%A7%DB%8C%D9%BE-%D8%B3%DB%8C%D8%B3%D8%AA%D9%85/</link>
+    <description>Recent content in تایپ سیستم on امیررضا قادری</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fa-IR</language>
+    <lastBuildDate>Mon, 05 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://amirrezaghaderi.ir/topic/%D8%AA%D8%A7%DB%8C%D9%BE-%D8%B3%DB%8C%D8%B3%D8%AA%D9%85/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>تایپ هایی که به آن ایمان داریم!</title>
+      <link>https://amirrezaghaderi.ir/blog/in-types-we-trust/</link>
+      <pubDate>Mon, 05 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://amirrezaghaderi.ir/blog/in-types-we-trust/</guid>
+      <description>فهرست مطالب  مقدمه گواهی لغو مسئولیت! پیش نیاز چرا زبان‌های استاتیک؟  صحت سرعت مستندات ابزارهای جانبی مدل‌سازی، قبل از پیاده‌سازی بازسازی (Refactoring) اعتماد به نفس بالاتر!  سوال و جواب‌های متداول  با وجود تست ها، باز هم به تایپ نیاز داریم؟ چطور یکی از پایدارترین سیستم‌های نرم‌افزاری دنیا با ارلنگ که یک زبان داینامیک است نوشته شده؟ پس چرا فیسبوک هنوز از PHP که یک زبان داینامیک است استفاده می‌کند؟ پس چرا اینستاگرام هنوز از پایتون که یک زبان داینامیک است استفاده می‌کند؟ من برایم سرعت مهم نیست؛ آیا باز هم به استاتیک تایپنگ نیاز دارم؟ برنامه‌ی من زیاد بزرگ نیست، آیا باز هم به استاتیک تایپنگ نیاز دارم؟  سخن آخر</description>
+    </item>
+    
+    <item>
+      <title>دیتا تایپ‌های جبری (‌‌ADT)</title>
+      <link>https://amirrezaghaderi.ir/blog/adt/</link>
+      <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://amirrezaghaderi.ir/blog/adt/</guid>
+      <description>فهرست مطالب  مقدمه هر تایپ، یک مجموعه است دیتا تایپ جبری ضرب یا Product  چگونه یک Product Type تعریف کنیم؟ struct در C  جمع یا Sum  چگونه یک Sum Type تعریف کنیم؟ Union ها در زبان C Enum ها در زبان C Tagged Union در زبان C تعریف Sum Type در زبان های مدرن  تایپ Option سخن آخر  
+مقدمه مدتی پیش یک پست بُلندبالا نوشتم و تعدادی از مفاهیم مربوط به تایپ سیستم‌ها را در آن شرح دادم؛ اما یکی از مهم‌ترین مفاهیمی که باید در آن پست قرار می‌دادم را از قلم انداختم.</description>
+    </item>
+    
+    <item>
+      <title>نبود قابلیت‌های مختلف در گولنگ: جنریک</title>
+      <link>https://amirrezaghaderi.ir/blog/golang-generics/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://amirrezaghaderi.ir/blog/golang-generics/</guid>
+      <description>فهرست مطالب  مطالب پیش‌نیاز مقدمه گولنگ جنریک ندارد؟ فلسفه‌ی گولنگ چیست؟ دست یابی به جنریک در گولنگ چرا در گولنگ نیاز به جنریک کمتر حس می‌شود؟ پیاده‌سازی جنریک‌ها در گولنگ: بسته‌بندی و بسته‌گُشایی پیاده‌سازی جنریک‌ها در گولنگ: تولید کد سخن آخر   مطالب پیش نیاز
+قبل از خواندن این نوشته، بهتر است با جنریک و شیوه‌های مختلفی که دیگر زبان‌ها آن را پیاده‌سازی کرده اند آشنا باشید.</description>
+    </item>
+    
+    <item>
+      <title>شیوه‌های مختلف پیاده سازی جنریک در زبان‌ها</title>
+      <link>https://amirrezaghaderi.ir/blog/generics/</link>
+      <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://amirrezaghaderi.ir/blog/generics/</guid>
+      <description>فهرست مطالب  مطالب پیش‌نیاز شیوه‌های مختلف پیاده سازی جنریک در زبان‌ها بسته‌بندی و بسته‌گُشایی در زمان اجرا (Boxing and Unboxing) تولید کد (Code generation) یک ریخت سازی ( Monomorphization ) پاک‌سازیِ تایپ (Type Erasure)   مطالب پیش نیاز
+در این نوشته قصد داریم شیوه‌هایی که زبان‌های مختلف برنامه‌نویسی به کمک آن جنریک‌ها را در خود پیاده سازی کرده‌اند بررسی کنیم. قبل از خواندن این نوشته، نیازمند آشنایی با یک سری مفاهیم پیش نیاز هستید.</description>
+    </item>
+    
+    <item>
+      <title>مفاهیم بنیادین تایپ سیستم ها</title>
+      <link>https://amirrezaghaderi.ir/blog/types/</link>
+      <pubDate>Thu, 06 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://amirrezaghaderi.ir/blog/types/</guid>
+      <description>فهرست مطالب  مقدمه تعاریف تایپ (Type) تایپ سیستم (Type System) تایپ چکینگ (Typechecking) تایپ چِکِر (Type checker) استاتیک تایپ (Static Type) داینامیک تایپ (Dynamic Type) استاتیک تایپینگ داوطلبانه (Optional Static Typing) آیا تمام زبان‌های کامپایلری، استاتیک تایپ هستند؟ کاوشگرِ تایپ (Type inference) تایپ نگاریِ صریح (Explicitly Typed) تایپ نگاریِ ضمنی (Implicitly Typed) آیا استاتیک بودن یک زبان، به معنی نوشتن تایپ در کنار متغیر است؟ زبان با تایپ مستحکم (Strong Type) زبان با تایپ سُست (Weak Type) تایپ سیستم دقیق (Sound type system) تایپ سیستم مبتنی بر نام (Nominal type system) مقایسه اجمالی بین زبان‌های استاتیک و داینامیک پُلی مورفیسم - چندریختی (Polymorphism) پلی مورفیسم تک منظوره (Ad hoc polymorphism) سربارگذاری تابع چیست؟ (Function overloading) پلی مورفیسم مبتنی بر رابطه‌ی تایپ‌ها (Subtyping) وراثت (Inheritance) سایه اندازی (Overriding) چیست؟ چرا وراثت مورد انتقاد است؟ وراثت در چه زمانی سودمند و بی‌خطر است؟ کامپوزیشن چیست؟ اجرایی نمودن کامپوزیشن اینترفیس (Interface) تایپ سیستم مبتنی بر ساختار (Structural type system) داک تایپینگ (Duck typing) پلی مورفیسم مبتنی بر پارامتر (Parametric polymorphism) جنریک (Generic) قابل پیش‌بینی نبودن تایپ‌های جایگزین در جنریک محدود کردن دامنه‌ی تایپ‌های جاگزین در جنریک سخن آخر</description>
+    </item>
+    
+  </channel>
+</rss>

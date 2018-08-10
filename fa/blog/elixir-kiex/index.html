@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fa-IR">
+<head>
+<meta charset="utf-8">
+<title>نصب چندین نسخه از زبان الیکسیر در یک سیستم | وب نوشت‌ها | امیررضا قادری</title>
+
+
+<meta name="description" content="آموزش آسان و قدم به قدم نصب و مدیریت چندین نسخه از زبان الیکسیر در یک سیستم"/>
+
+
+
+<meta name="keywords"    content="الیکسیر, کیکس, ارلنگ, نصب, کامپایل, نسخه"/>
+
+
+<meta name="viewport"    content="width=device-width, initial-scale=1">
+<meta name="author"      content="Amirreza Ghaderi">
+<meta name="robots"      content="INDEX,FOLLOW">
+
+<link rel="stylesheet"    href="https://amirrezaghaderi.ir/css/style.css" type="text/css"/>
+<link rel="stylesheet"    href="https://amirrezaghaderi.ir/css/solarized-light.css" type="text/css"/>
+
+<link rel="shortcut icon" type="image/png" href="https://amirrezaghaderi.ir/favicon.png">
+<link rel="alternate"     href="https://amirrezaghaderi.ir/index.xml" type="application/rss+xml" title="Amirreza's blog"/>
+
+<script type="text/javascript">
+if("querySelector"in document&&"addEventListener"in window&&"classList"in document.documentElement){}else{window.location="https:\/\/amirrezaghaderi.ir\//old-browser.html"}
+</script>
+
+
+
+</head>
+
+<body>
+
+<div id="page" class="site rtl">
+
+<header id="page-header" class="h100" role="banner">
+<nav id="side-menu" class="side-menu" role="navigation">
+  <a id="side-menu-btn" class='side-menu-btn white bg-red bh-black p15 w100 block' href="#menu">منوی سایت</a>
+  <div id="side-menu-list" class="side-menu-list">
+    <ul>
+      <li><a href="https://amirrezaghaderi.ir/">صفحه نخست</a></li>
+      <li><a href="https://amirrezaghaderi.ir/post/">فهرست مطالب</a></li>
+      <li><a href="https://amirrezaghaderi.ir/topic/">دسته‌بندی بر اساس موضوعات...</a></li>
+      <li><a href="https://amirrezaghaderi.ir/contact/">تماس</a></li>
+      <li><a href="https://amirrezaghaderi.ir/index.xml">فید</a></li>
+    </ul>
+  </div>
+</nav>
+</header>
+
+<div id="content" class="pb120">
+<div id="primary" class="">
+<main id="main" class="main w850 middle" role="main">
+
+
+
+<div class="center">
+    <p class=""><a class="f5 bg-red white p5" href="https://amirrezaghaderi.ir/post/">بازگشت</a></p>
+</div>
+
+<!----------------------------------------------------------------------- -->
+
+<article id="post" role="article">
+<header class="center bb-bold-black">
+ <h1 class="f1 mt30 mb30">
+  <a class="black fh-red" rel="bookmark" href="https://amirrezaghaderi.ir/blog/elixir-kiex/">نصب چندین نسخه از زبان الیکسیر در یک سیستم</a>
+ </h1>
+
+ <div class="pb10 f5 gray2">
+  <time class="" datetime="September 12, 2016">۱۳۹۵/۰۶/۲۲</time>
+ </div>
+
+</header>
+
+<div class="entry-toc">
+
+</div>
+
+<div class="entry-content p10">
+
+
+<p>چند وقت پیش در همین وبلاگ درباره <a href="http://amirrezaghaderi.ir/post/erlang-kerl/">نصب چندین ماشینِ ارلنگ در یک سیستم</a> صحبت کردیم. این نوشته به نوعی دنباله‌ی همون نوشته هست. برای همین پیشنهاد میکنم اول اون مطلب رو مطالعه کنید و بعد این نوشته رو بخونید.</p>
+
+<p>ارلنگ مثل جاوا، زبانی هست که روی یک ماشین مجازی اجرا میشه. ماشین مجازی ارلنگ با اسم BEAM صدا زده میشه و ماشین مجازی جاوا هم با اسم JVM  معروف هست. این درسته که ‌BEAM و JVM در ابتدای کار به عنوان سکوی اجرای ارلنگ و جاوا ساخته شده بودن، اما در حال حاضر این قابلیت رو دارن که به خوبی پذیرای زبان‌های دیگه‌ای هم باشن.</p>
+
+<p><a href="http://elixir-lang.org/">الیکسیر</a> زبان جوانی هست که روی ماشینِ مجازی ارلنگ اجرا میشه (<a href="http://elixir-lang.ir/">سایت فارسی الیکسیر</a>). رابطه‌ی الیکسیر با BEAM مشابه رابطه‌ای هست که کلوژور یا اسکالا با JVM دارن. ارلنگ هم مثل جاوا زبانی هست که سال‌ها پیش ساخته شده و با اینکه از استخون بندی مستحکمی برخوردار هست، اما ممکنه از دید خیلی از برنامه‌نویس‌های این دوره و زمونه اونقدرها زبان مدرنی نباشه. مدرن‌سازی این زبان‌ها هم به دلیل مسائل مربوط به سازگاری با نسخه‌های پیشین (Backward compatibility) با کندی انجام میشه. برای همین الیکسیر می‌تونه گزینه‌ی مناسبی باشه برای برنامه نویسانی که دوست دارن یک زبان مدرن‌تر رو روی پلتفرم ارلنگ تجربه کنن.</p>
+
+<p>برای کار با الیکسیر مسلما اولین کار اینه که اون رو نصب کنید. خوشبختانه نصب الیکسیر خیلی راحته چون <a href="https://www.erlang-solutions.com/">ارلنگ سولوشنز</a> به عنوان یکی از مُبلِغ‌ها و پشتیبان تجاری پلتفرم ارلنگ، <a href="https://www.erlang-solutions.com/resources/download.html">پکیج‌های از قبل آماده شده‌ی الیکسیر</a> رو براتون مهیا کرده و شما می‌تونید به آسونی ازشون استفاده کنید؛ یا اینکه مطابق این آموزش نصب حرفه‌ای تر الیکسیر رو به کمک ابزار <a href="https://github.com/taylor/kiex">kiex</a> انجام بدید. (از این بعد اون رو «کیکس» صدا میزنیم)</p>
+
+<p>کیکس یه ابزار کوچیک و ساده هست که میتونه نسخه‌ی متفاوت از زبان الیکسیر رو برای شما کامپایل کنه و این قابلیت رو به شما بده که براحتی در هر زمانی که دوست داشتید بین این نسخه‌ها سوییچ کنید. این راهنما به طور قدم به قدم و به زبانی ساده کار با این ابزار رو آموزش میده. این آموزش برای سیستم عامل <a href="http://www.ubuntu.com/">اوبونتو</a> نسخه ۱۶.۰۴ نوشته شده که تا سال ۲۰۲۱ از پشتیبانی رسمی برخوردار هست. شما می‌تونید با مقدار خیلی کمی تغییر (یا شاید هم بدون هیچ تغییری) از این راهنما برای بقیه سیستم عامل های شبه یونیکس مثل دبیان و فدورا و مک و غیره هم استفاده کنید…</p>
+
+<p>بدون صحبت بیشتر، شروع می‌کنیم…</p>
+
+<p><a name="requirements"></a><a name="پیش-نیازها"></a></p>
+
+<h2 id="مهیا-کردن-پیش-نیازها">مهیا کردن پیش نیازها</h2>
+
+<p>در حال حاضر تنها پیش‌نیازی که الیکسیر بهش نیاز داره پلتفرم ارلنگ (نسخه‌ی ۱۸ یا بالاتر) هست. <a href="http://amirrezaghaderi.ir/post/erlang-kerl/">نصب پلتفرم ارلنگ</a> هم قبلا در همین وبلاگ توضیح داده شده. بنابراین باید اول به کمک اون آموزش پلتفرم ارلنگ رو نصب کنید.</p>
+
+<p>بعد از نصب پلتفرم ارلنگ، یکی از نسخه‌های ارلنگ رو برای ترمینال فعلی فعال کنید؛ چگونگی انجام این مورد هم در اون آموزش برای شما قرار داده شده.</p>
+
+<p><a name="kiex-install"></a><a name="نصب-کیکس"></a></p>
+
+<h2 id="نصب-کیکس">نصب کیکس</h2>
+
+<p>کیکس در واقع فقط یک فایل مستقل هست و برای همین نصبش کار سختی نیست. در این قسمت ما کیکس رو به کمک curl دانلود و نصب می کنیم:</p>
+
+<pre><code>$ cd ~
+
+‍‍‍$ \curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
+</code></pre>
+
+<p>حواس‌تون باشه که دانلود فایل بالا (بدون هیچ دلیل منطقی) میتونه از طرف فیل‌کش مسدود شده باشه. در این صورت دیگه خودتون بهتر می دونید که باید از چه طریقی فیل‌کش رو دور بزنید!</p>
+
+<p>بعد از دانلود و نصب کیکس، لازم هست که اون رو در مسیر اجرایی ترمینال قرار بدید. برای این کار کافیه خط زیر رو به اسکریپت آغازین ترمینال اضافه کنید. در اکثر توزیع‌های لینوکس، این اسکریپت فایلی هست به اسم <code>.bashrc</code> که در شاخه‌ی home کاربر قرار داره. این فایل رو با ادیتور محبوب تون باز کنید، و خط زیر رو به آخرش اضافه کنید:</p>
+
+<pre><code># edit .bashrc
+
+
+test -s &quot;$HOME/.kiex/scripts/kiex&quot; &amp;&amp; source &quot;$HOME/.kiex/scripts/kiex&quot;
+</code></pre>
+
+<p>ادیتور رو ببندید، و دستور زیر رو در ترمینال جاری اجرا کنید تا تغییراتی که در اسکریپت ترمینال دادید اعمال بشه:</p>
+
+<pre><code>$ cd ~
+$ source .bashrc
+</code></pre>
+
+<p>اگر همه چیز درست پیش رفته باشه، شما باید بتونید دستور <code>kiex</code> رو در ترمینال اجرا کنید. با اجرای این دستور بدون هیچ پارامتری، باید راهنمای کیکس به شما نمایش داده بشه:</p>
+
+<pre><code>$ kiex
+
+kiex commands:
+    list                      - shows currently installed Elixirs
+    list known                - shows available Elixir releases
+    list branches             - shows available Elixir branches
+    install &lt;version&gt;         - installs the given release version
+    alias &lt;version&gt; &lt;alias&gt;   - creates an alias for the given version
+    use &lt;version&gt; [--default] - uses the given version for this shell
+    shell &lt;version&gt;           - uses the given version for this shell
+    default &lt;version&gt;         - sets the default version to be used
+    selfupdate                - updates kiex itself
+    implode                   - removes kiex and all installed Elixirs
+    reset                     - resets default Elixir version to null
+</code></pre>
+
+<p>بعد از نصب کیکس، باید ازش درخواست کنیم که نسخه‌های قابل نصب الیکسیر رو برامون نمایش بده تا ما بتونیم از بین شون انتخاب کنیم:</p>
+
+<pre><code>$ kiex list known
+</code></pre>
+
+<p>کیکس به مخزن گیت‌هاب زبان الیکسیر وصل میشه و برامون لیستی از نسخه‌های قابل نصب رو نمایش میده:</p>
+
+<pre><code>Getting the available releases from https://github.com/elixir-lang/elixir/releases
+
+Known Elixir releases:
+    . . .
+    . . .
+    1.2.0
+    1.2.1
+    1.2.2
+    1.2.3
+    1.2.4
+    1.2.5
+    1.2.6
+    1.3.0
+    1.3.0-rc.0
+    1.3.0-rc.1
+    1.3.1
+    1.3.2
+</code></pre>
+
+<p><a name="compile-install"></a><a name="کامپایل-نصب"></a></p>
+
+<h2 id="کامپایل-و-نصب-الیکسیر">کامپایل و نصب الیکسیر</h2>
+
+<p>از لیست نمایش داده شده، یکی از نسخه‌ها رو انتخاب کنید و کیکس بگید که اون رو برای شما نصب کنه. با وارد کردن این دستور، کیکس ابتدا به کمک git مخزن زبان الیکسیر رو از اینترنت میگیره و به صورت اتوماتیک زبان الیکسیر رو کامپایل و نصب میکنه:</p>
+
+<pre><code>$ kiex install 1.3.2
+</code></pre>
+
+<p>این پروسه با توجه به سرعت اینترنت شما (دریافت مخزن از اینترنت) و سرعت دستگاه‌تون، میتونه چیزی بین ۱۵ تا ۴۰-۵۰ دقیقه طول بکشه. صبور باشید.</p>
+
+<p>بعد از اینکه کامپایل به پایان رسید، می‌تونید از درست انجام شدن این کار اطمینان حاصل کنید. دستور زیر لیستی از تمام نسخه‌های الیکسیر که به کمک کیکس نصب شدن رو به شما نشون میده:</p>
+
+<pre><code>$ kiex list
+</code></pre>
+
+<p>از بین لیست پیش روتون، میتونید به کیکس اعلام کنید که یکی از اون‌ها رو برای ترمینال جاری فعال کنه:</p>
+
+<pre><code>$ kiex use 1.3.2
+</code></pre>
+
+<p>و در نهایت…………………………. شروع کنید…</p>
+
+<pre><code>$ iex
+</code></pre>
+
+</div>
+
+<footer class="p5 pt40 pb40">
+ 
+ <div class="cat-links">
+  <p><strong>دسته‌بندی:</strong>
+  
+   <a href="https://amirrezaghaderi.ir/topic/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%86%D9%88%DB%8C%D8%B3%DB%8C">برنامه نویسی</a>.
+  
+   <a href="https://amirrezaghaderi.ir/topic/%D8%A7%D8%B1%D9%84%D9%86%DA%AF">ارلنگ</a>.
+  
+   <a href="https://amirrezaghaderi.ir/topic/%D8%A7%D9%84%DB%8C%DA%A9%D8%B3%DB%8C%D8%B1">الیکسیر</a>.
+  
+  </p>
+ </div>
+
+</footer>
+</article>
+<!----------------------------------------------------------------------- -->
+
+
+<div class="comments">
+<div>
+<h2>نظرات</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'amirrezaghaderi-ir';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+</div>
+
+
+
+</main>
+</div><!-- primary ends. -->
+</div><!-- content ends. -->
+
+
+<footer id="footer" class="absolute bottom-left w100pr pt40 pb40 center bg-black" role="footer">
+ <div class="f5">
+  <a class="block pb15 gray2" href="https://amirrezaghaderi.ir/" rel="copyright">
+  امیررضا قادری. تمام حقوق محفوظ است.
+  </a>
+  <a class="block gray2" href="http://creativecommons.org/licenses/by-nc/4.0/">
+  مطالب تحت مجوز کریتیو کامنز (CC BY-NC 4.0) منتشر شده‌اند.
+  </a>
+ </div>
+</footer>
+
+</div><!-- page ends. -->
+
+<script type="text/javascript" src="https://amirrezaghaderi.ir/js/site.js" ></script>
+</body>
+</html>
+

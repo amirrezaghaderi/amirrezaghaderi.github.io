@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fa-IR">
+<head>
+<meta charset="utf-8">
+<title>شیوه‌های مختلف پیاده سازی جنریک در زبان‌ها | وب نوشت‌ها | امیررضا قادری</title>
+
+
+<meta name="description" content="نگاهی به شیوه‌های مختلف پیاده سازی جنریک در زبان های برنامه نویسی"/>
+
+
+
+<meta name="keywords"    content="جنریک, تایپ, برنامه نویسی, برنامه‌نویسی"/>
+
+
+<meta name="viewport"    content="width=device-width, initial-scale=1">
+<meta name="author"      content="Amirreza Ghaderi">
+<meta name="robots"      content="INDEX,FOLLOW">
+
+<link rel="stylesheet"    href="https://amirrezaghaderi.ir/css/style.css" type="text/css"/>
+<link rel="stylesheet"    href="https://amirrezaghaderi.ir/css/solarized-light.css" type="text/css"/>
+
+<link rel="shortcut icon" type="image/png" href="https://amirrezaghaderi.ir/favicon.png">
+<link rel="alternate"     href="https://amirrezaghaderi.ir/index.xml" type="application/rss+xml" title="Amirreza's blog"/>
+
+<script type="text/javascript">
+if("querySelector"in document&&"addEventListener"in window&&"classList"in document.documentElement){}else{window.location="https:\/\/amirrezaghaderi.ir\//old-browser.html"}
+</script>
+
+
+
+</head>
+
+<body>
+
+<div id="page" class="site rtl">
+
+<header id="page-header" class="h100" role="banner">
+<nav id="side-menu" class="side-menu" role="navigation">
+  <a id="side-menu-btn" class='side-menu-btn white bg-red bh-black p15 w100 block' href="#menu">منوی سایت</a>
+  <div id="side-menu-list" class="side-menu-list">
+    <ul>
+      <li><a href="https://amirrezaghaderi.ir/">صفحه نخست</a></li>
+      <li><a href="https://amirrezaghaderi.ir/post/">فهرست مطالب</a></li>
+      <li><a href="https://amirrezaghaderi.ir/topic/">دسته‌بندی بر اساس موضوعات...</a></li>
+      <li><a href="https://amirrezaghaderi.ir/contact/">تماس</a></li>
+      <li><a href="https://amirrezaghaderi.ir/index.xml">فید</a></li>
+    </ul>
+  </div>
+</nav>
+</header>
+
+<div id="content" class="pb120">
+<div id="primary" class="">
+<main id="main" class="main w850 middle" role="main">
+
+
+
+<div class="center">
+    <p class=""><a class="f5 bg-red white p5" href="https://amirrezaghaderi.ir/post/">بازگشت</a></p>
+</div>
+
+<!----------------------------------------------------------------------- -->
+
+<article id="post" role="article">
+<header class="center bb-bold-black">
+ <h1 class="f1 mt30 mb30">
+  <a class="black fh-red" rel="bookmark" href="https://amirrezaghaderi.ir/blog/generics/">شیوه‌های مختلف پیاده سازی جنریک در زبان‌ها</a>
+ </h1>
+
+ <div class="pb10 f5 gray2">
+  <time class="" datetime="July 11, 2017">۱۳۹۶/۰۴/۲۰</time>
+ </div>
+
+</header>
+
+<div class="entry-toc">
+
+</div>
+
+<div class="entry-content p10">
+
+
+<p><a name="toc"></a></p>
+
+<h2 id="فهرست-مطالب">فهرست مطالب</h2>
+
+<ul>
+<li><a href="#prereq">مطالب پیش‌نیاز</a></li>
+<li><a href="#generic-howto">شیوه‌های مختلف پیاده سازی جنریک در زبان‌ها</a></li>
+<li><a href="#boxing-unboxing">بسته‌بندی و بسته‌گُشایی در زمان اجرا (Boxing and Unboxing)</a></li>
+<li><a href="#code-generation">تولید کد (Code generation)</a></li>
+<li><a href="#monomorphization">یک ریخت سازی ( Monomorphization )</a></li>
+<li><a href="#type-erasure">پاک‌سازیِ تایپ (Type Erasure)</a></li>
+</ul>
+
+<p><a name="prereq"></a>
+<strong>مطالب پیش نیاز</strong></p>
+
+<p>در این نوشته قصد داریم شیوه‌هایی که زبان‌های مختلف برنامه‌نویسی به کمک آن جنریک‌ها را  در خود پیاده سازی کرده‌اند بررسی کنیم. قبل از خواندن این نوشته، نیازمند آشنایی با یک سری مفاهیم پیش نیاز هستید. مثلا، این «جنریک» که قرار است درباره پیاده سازی آن صحبت کنیم اصلا چه چیزیست؟ اگر با چنین مباحثی آشنا نیستید، می‌توانید برای مطالعه‌ی آن‌ها به زبان فارسی وارد لینک‌های زیر شوید:</p>
+
+<ul>
+<li><a href="http://amirrezaghaderi.ir/post/types/#polymorphism">پُلی مورفیسم - چندریختی (Polymorphism)</a></li>
+<li><a href="http://amirrezaghaderi.ir/post/types/#composition">کامپوزیشن چیست؟</a></li>
+<li><a href="http://amirrezaghaderi.ir/post/types/#interface">اینترفیس (Interface)</a></li>
+<li><a href="http://amirrezaghaderi.ir/post/types/#structural-type-system">تایپ سیستم مبتنی بر ساختار (Structural type system)</a></li>
+<li><a href="http://amirrezaghaderi.ir/post/types/#duck-typing">داک تایپینگ (Duck typing)</a></li>
+<li><a href="http://amirrezaghaderi.ir/post/types/#generic">جنریک (Generic)</a></li>
+</ul>
+
+<p><a name="generic-howto"></a></p>
+
+<h2 id="شیوه-های-مختلف-پیاده-سازی-جنریک-در-زبان-ها">شیوه‌های مختلف پیاده سازی جنریک در زبان‌ها</h2>
+
+<p>برای پیاده‌سازی جنریک در زبان‌های برنامه‌نویسی، شیوه‌های گوناگونی ابداع شده است؛ اما می‌توان تمام آن‌ها را به شکل مستقیم یا غیر مستقیم در دو گروه زیر طبقه بندی کرد:</p>
+
+<ul>
+<li>بسته‌بندی و بسته‌گُشایی در زمان اجرا (Boxing and Unboxing)</li>
+<li>تولید کد (Code generation)</li>
+</ul>
+
+<p>بیایید کمی این دو را توضیح دهیم&hellip;</p>
+
+<p><a name="boxing-unboxing"></a></p>
+
+<h3 id="بسته-بندی-و-بسته-گ-شایی-در-زمان-اجرا-boxing-and-unboxing">بسته‌بندی و بسته‌گُشایی در زمان اجرا (Boxing and Unboxing)</h3>
+
+<p>یک انبار لوازم خانگی را تصور کنید: کولر، یخچال، تلویزیون، سینما خانگی، چرخ گوشت، آب میوه گیری،&hellip;</p>
+
+<p>وقتی وارد این انبار شوید چه می‌بینید؟ کولر و یخچال و تلویزیون و ..؟ خیر، شما در این انبار فقط «جعبه» می‌بینید! جعبه‌های بزرگ و کوچک که در کنار هم چیده شده اند. تمام آن لوازم، در این جعبه‌ها قرار دارند. به عبارتی «جعبه»، یک موجودیت استاندارد است که می‌توانیم هر نوع وسیله‌ای که بخواهیم درآن قرار دهیم. مهم نیست جنس وسیله چه باشد، تمام آن‌ها می‌توانند در جعبه‌ها «بسته‌بندی» شوند! با بسته‌بندی کردن وسایل در جعبه‌ها، ما شکل و شمایل همه‌ی آن‌ها را «یکسان» کرده‌ایم.</p>
+
+<p>اگر می‌خواستیم مثال بالا را در برنامه‌نویسی عنوان کنیم چنین می‌شد:</p>
+
+<p>چند تایپ داریم: تایپِ کولر، تایپِ یخچال، تایپِ تلویزیون،&hellip; این تایپ‌ها با یکدیگر متفاوت هستند، اما می‌توانیم آن‌ها در «تایپِ جعبه» بسته‌بندی کنیم؛ با اینکار تایپ تمام آن‌ها از نمای بیرون، یکسان خواهد بود. حالا می توانیم از این یکسان شدن تایپ‌ها برای پلی مورفیسم استفاده نماییم.</p>
+
+<p>تایپِ جعبه در زبان‌های برنامه‌نویسی معمولا توسط یک اشاره‌گر پیاده‌سازی می‌شود. یعنی به جای اینکه مستقیم با تایپِ مد نظرمان طرف شویم، با یک تایپ ثانویه که شامل اشاره‌گری به تایپ مورد نظرمان است طرف خواهیم شد.</p>
+
+<p>برگردیم به مثال انبار لوازم خانگی؛ فرض کنید می‌خواهید از یکی از تلویزیون‌های داخل انبار استفاده کنید. اما تلویزیون درون جعبه است، آیا می‌توانید جعبه‌ی تلویزیون را مستقیم به برق وسط کنید؟ خیر&hellip; باید ابتدا جعبه را «بسته‌گشایی» نمایید تا بدین ترتیب به محتوای درون آن که همان تلویزیون باشد دسترسی پیدا کنید.</p>
+
+<p>در برنامه‌نویسی هم همینطور است. اگر تایپی را توسط «تایپِ جعبه» بسته‌بندی کرده باشید، دیگر نمی‌توانید مستقیما با آن تایپ کار کنید. باید ابتدا «تایپِ جعبه» را بسته‌گشایی کنید تا بتوانید به چیزی که درون آن است دسترسی پیدا کنید. همانطور که گفتیم «تایپ جعبه» شامل اشاره‌گریست به تایپ اصلی؛ ما برای دسترسی به تایپ اصلی باید به شکل غیر مستقیم و از طریق این اشاره‌گر، به مکان آن تایپ در حافظه رجوع کنیم. (dereference)</p>
+
+<p>مثلا وقتی در پایتون می‌گویید a = 10 ، عدد صحیح 10 در متغیر a ریخته <strong>نمی‌شود</strong>.  a در واقع یک اشاره‌گر است که به مکان دیگری از حافظه که عدد صحیح 10 در آن حضور دارد اشاره می کند. در این حالت می‌گوییم آن مقدار را به کمک a بسته‌بندی کرده‌ایم.</p>
+
+<p>چون مقدار 10 توسط a بسته‌بندی شده است، نمی‌توانیم مستقیم به آن دسترسی داشته باشیم. در صورتی که بخواهیم از مقدار درون متغیر a استفاده کنیم، باید به طور غیر مستقیم و به کمک ارجاعی که a در اختیار ما گذاشته است به آن برسیم. در این حالت می‌گوییم دسترسی به مقدار 10 از طریق بسته‌گشایی از متغیر a رخ داده است.</p>
+
+<pre><code>+-------+                     +--------+
+|   a   | -----------------&gt;  |   int  |
++-------+                     +--------+
+                              |   10   |
+                              +--------+
+</code></pre>
+
+<p>قریب به اتفاق زبان‌های داینامیک‌تایپ از این تکنیک استفاده می‌کنند؛ مانند پایتون، روبی، پی‌اچ‌پی، جاوااسکریپت و غیره&hellip; تمام اعمال مربوط به بسته‌بندی‌ها و بسته‌گشایی ها در پشت صحنه و به دور از چشمان شما انجام می‌گیرد و شما به حالت معمول لازم نیست کاری انجام دهید؛ برای همین است که شما در این زبان‌ها نیاز به جنریک ندارید، چرا که این زبان‌ها به طور خودکار دارای جنریک در زمان اجرا هستند.</p>
+
+<p>زبان‌های استاتیک هم می‌توانند از تکنیک «بسته‌بندی و بسته‌گُشایی» استفاده نمایند تا جنریک‌ها را در زمان اجرا پیاده‌سازی کنند.</p>
+
+<p>مزیت‌های این تکنیک:</p>
+
+<ul>
+<li>سادگی در پیاده سازی</li>
+<li>انعطاف پذیری بسیار بالا (در حدی که کدهای‌تان عملا تبدیل به کدهای داینامیک می‌شوند!)</li>
+</ul>
+
+<p>معایب این تکنیک:</p>
+
+<ul>
+<li>مصرف حافظه بالاتر (به دلیل بسته بندی تایپ‌ها با یک لایه‌ی ثانویه)</li>
+<li>سرعت اجرای پایین‌تر (به دلیل اعمال مربوط به بسته‌بندی و بسته‌گُشایی)</li>
+<li>امنیت پایین‌تر به دلیل اتفاق افتادن این مکانیزم در زمان ران‌تایم (کامپایلر نمی‌تواند تایپ‌ها را قبل از اجرای برنامه چک کند، چرا که تمام تایپ‌ها از نظر او از یک جنس هستند: تایپِ جعبه)</li>
+</ul>
+
+<p><a name="code-generation"></a></p>
+
+<h3 id="تولید-کد-code-generation">تولید کد (Code generation)</h3>
+
+<p>تولید کد یا ویرایش آ‌ن‌ها قبل از مرحله‌ی نهایی کامپایل، از وظایف بدیهی هر کامپایلر است. کامپایلرها یا ابزارهایی که مولد کد هستند، می‌توانند کدهایی که برنامه‌نویس به شکل جنریک نگارش کرده است را به گونه‌ای بازسازی کنند که تبدیل به کدهایی بدون جنریک و معمولی شوند. سپس این کدهای معمولی به خورد کامپایلر داده خواهند شد. این روند به چندین روش قابل پیاده سازی است که در این نوشته ما دو مورد از آن ها را توضیح خواهیم داد:</p>
+
+<p><a name="monomorphization"></a></p>
+
+<h3 id="یک-ریخت-سازی-monomorphization">یک ریخت سازی ( Monomorphization )</h3>
+
+<p>عجب کلمه‌ی عجیب و بزرگی! گول ظاهر آن را نخورید، چرا که «یک ریخت سازی» از ساده ‌ترین روش‌های پیاده‌سازی جنریک است. «یک ریخت سازی» یعنی کامپایلر به ازای هر تایپی که قرار است در جنریک شرکت داده شود، یک پیاده سازی مجزا از آن جنریک را ارائه کند که مخصوص همان تایپ باشد.</p>
+
+<p>مثلا تابع جنریک زیر را در نظر داشته باشید. کار این تابع این است که هر آرگومانی به آن ارسال کردیم، عینا آن را برگشت دهد (شبه کد):</p>
+
+<pre><code>function echo&lt;T&gt;( T arg)  ⟹ T {
+    return arg;
+}
+</code></pre>
+
+<p>اگر ما در کدهایمان به این شکل از تابع بالا استفاده کنیم:</p>
+
+<pre><code>echo&lt;int&gt;(12);    ---&gt; 12
+echo&lt;float&gt;(3.14);    ---&gt; 3.14
+echo&lt;string&gt;(&quot;hi&quot;);    ---&gt; &quot;hi&quot;
+</code></pre>
+
+<p>کامپایلر در پشت صحنه قبل از اینکه برنامه را کامپایل کند، سه گروه از تابع echo را تولید خواهد کرد (به تناسب تایپ‌هایی که به آن وارد شده‌اند):</p>
+
+<pre><code>function echoInt( int arg ) ⟹ int{
+    return arg;
+}
+
+function echoFloat( float arg ) ⟹ float {
+    return arg;
+}
+
+function echoString( string arg ) ⟹ string {
+    return arg;
+}
+</code></pre>
+
+<p>به این روش می‌گوییم «یک ریخت سازی». در اینجا کدهای جنریک قبل از اینکه به مرحله‌ی کامپایل برسند، به کدهای معمولی و بدون جنریک تبدیل شدند. زبان‌هایی مانند ++C و ‌Rust از این روش برای پیاده‌سازی جنریک استفاده می‌کنند. عمل تولید کد کاملا در پشت صحنه و به دور از چشم برنامه‌نویسان اتفاق می‌افتد.</p>
+
+<p>مزیت‌های این تکنیک:</p>
+
+<ul>
+<li>بالاترین حد از نظر سادگی در پیاده سازی</li>
+<li>بالاترین حد از نظر سرعت اجرا</li>
+<li>بالاترین حد از نظر امنیتِ تایپ سیستم</li>
+<li>کمترین حد از نظر مصرف حافظه و منابع دیگر (تقریبا صفر)</li>
+<li>بدون نیاز به عملیات زمان اجرا (zero-cost abstraction)</li>
+</ul>
+
+<p>معایب این تکنیک:</p>
+
+<ul>
+<li>زیاد شدن کدهایی که نیاز به تولید و کامپایل دارند (به ازای هر تایپ، یک گروه جدید از کدها تولید می‌شود)</li>
+<li>پایین آمدن سرعتِ کامپایل برنامه‌ها (با زیاد شدن تایپ‌ها، این افت سرعت شدیدتر خواهد شد)</li>
+</ul>
+
+<p><a name="type-erasure"></a></p>
+
+<h3 id="پاک-سازی-تایپ-type-erasure">پاک‌سازیِ تایپ (Type Erasure)</h3>
+
+<p>پاک‌سازیِ تایپ شیوه‌ای از تکنیک تولید کد است که در آن اتفاقات زیر به وقوع می‌پیوندد:</p>
+
+<ul>
+<li>کامپایلر کدهای جنریک را آنالیز می‌کند. با این آنالیز اطلاعاتی که درباره کدهای جنریک نیاز دارد را بدست می‌آورد. (مثلا اینکه چه تایپ‌هایی در جنریک وارد شده‌اند)</li>
+<li>پس از کسب اطلاعات بالا، کامپایلر تمام نشانه‌های جنریک را از کدها حذف می‌کند و آن‌ها را به حالت معمولی تبدیل می نماید.</li>
+<li>به جای اینکه مثل تکنیک «یک ریخت سازی» چندین گروه از کدها را برای هر تایپ ایجاد کند، فقط یک نسخه‌ی غیر جنریک از کد را برای تمام تایپ‌ها تولید خواهد کرد&hellip;</li>
+<li>اما در این نسخه‌ی غیر جنریک، کامپایلر در قسمت‌های خاصی که لازم است (با توجه به اطلاعاتی که کسب کرده)، کدهایی برای «تبدیل تایپ» (Type Casting) ها قرار خواهد داد.</li>
+<li>در این روش تمام عملیات در زمان کامپایل اتفاق می‌افتد، و فقط «تبدیل تایپ» در زمان اجرا صورت خواهد گرفت. با اینحال کامپایلر به ما اطمینان می‌دهد که این تبدیل تایپ در زمان اجرا با موفقیت انجام خواهد شد.</li>
+</ul>
+
+<p>زبانی مانند Java از این تکنیک استفاده می کند. مثلا در زیر یک کد جنریک جاوا را می‌بینید:</p>
+
+<pre><code>List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+list.add(&quot;Hi&quot;);
+String x = list.get(0);
+</code></pre>
+
+<p>قبل از کامپایل نهایی، جاوا کد بالا را به شکل زیر تولید مجدد خواهد کرد:</p>
+
+<pre><code>List list = new ArrayList();
+list.add(&quot;Hi&quot;);
+String x = (String) list.get(0);
+</code></pre>
+
+<p>دقت کنید که چگونه کامپایلر تبدیل تایپ string را در نقطه‌ی دقیق قرار داده است تا برای برنامه مشکلی پیش نیاید.</p>
+
+<p>مزیت‌ها و معایب این تکنیک:</p>
+
+<ul>
+<li>سادگیِ متوسط در پیاده سازی</li>
+<li>سرعت تقریبا مناسب اجرا</li>
+<li>امنیتِ مناسب از نظر تایپ سیستم</li>
+<li>کمی حافظه‌ی سربار (بسیار قلیل)</li>
+<li>نیازمند به عملیات زمان اجرا، ولی به شکل بسیار محدود و کنترل شده</li>
+<li>سرعت کامپایل متوسط (در نهایت افت سرعت به نسب کامپایل معمولی وجود خواهد داشت، اگر چه کمتر)</li>
+</ul>
+
+</div>
+
+<footer class="p5 pt40 pb40">
+ 
+ <div class="cat-links">
+  <p><strong>دسته‌بندی:</strong>
+  
+   <a href="https://amirrezaghaderi.ir/topic/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%86%D9%88%DB%8C%D8%B3%DB%8C">برنامه نویسی</a>.
+  
+   <a href="https://amirrezaghaderi.ir/topic/%D8%AA%D8%A7%DB%8C%D9%BE-%D8%B3%DB%8C%D8%B3%D8%AA%D9%85">تایپ سیستم</a>.
+  
+  </p>
+ </div>
+
+</footer>
+</article>
+<!----------------------------------------------------------------------- -->
+
+
+<div class="comments">
+<div>
+<h2>نظرات</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'amirrezaghaderi-ir';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+</div>
+
+
+
+</main>
+</div><!-- primary ends. -->
+</div><!-- content ends. -->
+
+
+<footer id="footer" class="absolute bottom-left w100pr pt40 pb40 center bg-black" role="footer">
+ <div class="f5">
+  <a class="block pb15 gray2" href="https://amirrezaghaderi.ir/" rel="copyright">
+  امیررضا قادری. تمام حقوق محفوظ است.
+  </a>
+  <a class="block gray2" href="http://creativecommons.org/licenses/by-nc/4.0/">
+  مطالب تحت مجوز کریتیو کامنز (CC BY-NC 4.0) منتشر شده‌اند.
+  </a>
+ </div>
+</footer>
+
+</div><!-- page ends. -->
+
+<script type="text/javascript" src="https://amirrezaghaderi.ir/js/site.js" ></script>
+</body>
+</html>
+
