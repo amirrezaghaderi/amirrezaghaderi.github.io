@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ارلنگ on امیررضا قادری</title>
-    <link>https://amirrezaghaderi.ir/topic/%D8%A7%D8%B1%D9%84%D9%86%DA%AF/</link>
+    <link>https://amirrezaghaderi.com/fa/topic/%D8%A7%D8%B1%D9%84%D9%86%DA%AF/</link>
     <description>Recent content in ارلنگ on امیررضا قادری</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fa-IR</language>
     <lastBuildDate>Mon, 12 Sep 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://amirrezaghaderi.ir/topic/%D8%A7%D8%B1%D9%84%D9%86%DA%AF/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://amirrezaghaderi.com/fa/topic/%D8%A7%D8%B1%D9%84%D9%86%DA%AF/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>نصب چندین نسخه از زبان الیکسیر در یک سیستم</title>
-      <link>https://amirrezaghaderi.ir/blog/elixir-kiex/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/elixir-kiex/</link>
       <pubDate>Mon, 12 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/elixir-kiex/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/elixir-kiex/</guid>
       <description>چند وقت پیش در همین وبلاگ درباره نصب چندین ماشینِ ارلنگ در یک سیستم صحبت کردیم. این نوشته به نوعی دنباله‌ی همون نوشته هست. برای همین پیشنهاد میکنم اول اون مطلب رو مطالعه کنید و بعد این نوشته رو بخونید.
 ارلنگ مثل جاوا، زبانی هست که روی یک ماشین مجازی اجرا میشه. ماشین مجازی ارلنگ با اسم BEAM صدا زده میشه و ماشین مجازی جاوا هم با اسم JVM معروف هست.</description>
     </item>
     
     <item>
       <title>نصب چندین ماشین ارلنگ در یک سیستم</title>
-      <link>https://amirrezaghaderi.ir/blog/erlang-kerl/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/erlang-kerl/</link>
       <pubDate>Sat, 06 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/erlang-kerl/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/erlang-kerl/</guid>
       <description>صدها زبان برنامه‌نویسی مختلف هر سال وارد دنیای کامپیوتر میشن و اکثر اون‌ها به همون سرعتی که پدیدار شدن به فراموشی سپرده میشن. ارلنگ حدود سی سال هست که به عنوان یه زبان صنعتی (industrial) در حساس‌ترین و گسترده‌ترین سیستم‌های نرم‌افزاری استفاده میشه و حساب خودش رو پس داده. اگر بخواهید کار باهاش رو شروع کنید، مسلما اولین قدمی که باید بردارید نصب کردن پلتفرم ارلنگ هست.
 خوشبختانه نصب پلتفرم ارلنگ خیلی راحته چون ارلنگ سولوشنز به عنوان یکی از مُبلِغ‌ها و پشتیبان تجاری این پلتفرم، پکیج‌های از قبل آماده شده‌ی این پلتفرم رو براتون مهیا کرده و شما می‌تونید به آسونی ازشون استفاده کنید.</description>
     </item>

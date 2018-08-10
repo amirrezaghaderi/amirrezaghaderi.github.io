@@ -2,165 +2,165 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on امیررضا قادری</title>
-    <link>https://amirrezaghaderi.ir/blog/</link>
+    <link>https://amirrezaghaderi.com/fa/blog/</link>
     <description>Recent content in Blogs on امیررضا قادری</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fa-IR</language>
     <lastBuildDate>Wed, 18 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://amirrezaghaderi.ir/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://amirrezaghaderi.com/fa/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>کالبد شکافی GraalVM</title>
-      <link>https://amirrezaghaderi.ir/blog/graalvm/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/graalvm/</link>
       <pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/graalvm/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/graalvm/</guid>
       <description>فهرست مطالب  ماشین چیست؟ (Machine) ماشین مجازی چیست؟ (VM) ماشین مجازی جاوا (JVM) GraalVm Graal Compiler Truffle SubstrateVM ابزارهای جانبی جمع بندی مطالب  در زمان نگارش این پست، هنوز ۲۴ ساعت نشده است که شرکت Oracle از VM جدید خود با اسم GraalVM رونمایی کرده. و تعداد زیادی از برنامه‌نویسان مطمئن نیستند که GraalVM دقیقا چیست و چه کاری انجام می‌دهد. در این پست قصد داریم GraalVM را کالبدشکافی کنیم&amp;hellip;</description>
     </item>
     
     <item>
       <title>تایپ هایی که به آن ایمان داریم!</title>
-      <link>https://amirrezaghaderi.ir/blog/in-types-we-trust/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/in-types-we-trust/</link>
       <pubDate>Mon, 05 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/in-types-we-trust/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/in-types-we-trust/</guid>
       <description>فهرست مطالب  مقدمه گواهی لغو مسئولیت! پیش نیاز چرا زبان‌های استاتیک؟  صحت سرعت مستندات ابزارهای جانبی مدل‌سازی، قبل از پیاده‌سازی بازسازی (Refactoring) اعتماد به نفس بالاتر!  سوال و جواب‌های متداول  با وجود تست ها، باز هم به تایپ نیاز داریم؟ چطور یکی از پایدارترین سیستم‌های نرم‌افزاری دنیا با ارلنگ که یک زبان داینامیک است نوشته شده؟ پس چرا فیسبوک هنوز از PHP که یک زبان داینامیک است استفاده می‌کند؟ پس چرا اینستاگرام هنوز از پایتون که یک زبان داینامیک است استفاده می‌کند؟ من برایم سرعت مهم نیست؛ آیا باز هم به استاتیک تایپنگ نیاز دارم؟ برنامه‌ی من زیاد بزرگ نیست، آیا باز هم به استاتیک تایپنگ نیاز دارم؟  سخن آخر</description>
     </item>
     
     <item>
       <title>دیتا تایپ‌های جبری (‌‌ADT)</title>
-      <link>https://amirrezaghaderi.ir/blog/adt/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/adt/</link>
       <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/adt/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/adt/</guid>
       <description>فهرست مطالب  مقدمه هر تایپ، یک مجموعه است دیتا تایپ جبری ضرب یا Product  چگونه یک Product Type تعریف کنیم؟ struct در C  جمع یا Sum  چگونه یک Sum Type تعریف کنیم؟ Union ها در زبان C Enum ها در زبان C Tagged Union در زبان C تعریف Sum Type در زبان های مدرن  تایپ Option سخن آخر  
 مقدمه مدتی پیش یک پست بُلندبالا نوشتم و تعدادی از مفاهیم مربوط به تایپ سیستم‌ها را در آن شرح دادم؛ اما یکی از مهم‌ترین مفاهیمی که باید در آن پست قرار می‌دادم را از قلم انداختم.</description>
     </item>
     
     <item>
       <title>شرکت شما، خانواده‌ی شما نیست</title>
-      <link>https://amirrezaghaderi.ir/blog/not-family/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/not-family/</link>
       <pubDate>Wed, 09 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/not-family/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/not-family/</guid>
       <description>اگر مقام‌های بالادستیِ تان مدام از این حرف می‌زنند که شما برایشان مثل یک «خانواده» هستید، حواس‌تان را خوب جمع کنید! وقتی آن‌ها می‌گویند شما مانند خانواده‌شان هستید، منظورشان این نیست که در هر شرایطی از شما حمایت خواهند کرد و بی هیچ چون و چرایی شما را دوست خواهند داشت (مانند کاری که یک «خانواده‌ی واقعی» انجام می‌دهد)، بلکه احتمالا انگیزه‌ی دیگری دارند: اینکه شما را راضی به از خودگذشتگی هایی کنند که به طور عادی در محیطی به غیر از محیط خانواده زیر بارشان نخواهید رفت!</description>
     </item>
     
     <item>
       <title>جامعه‌ی نرم‌افزارهای آزاد: از ما بهتران!</title>
-      <link>https://amirrezaghaderi.ir/blog/fsfiran/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/fsfiran/</link>
       <pubDate>Sun, 23 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/fsfiran/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/fsfiran/</guid>
       <description>اعتدال! چه واژه‌ی زیبایی؛ و چقدر پیچیده! پیچیده به این دلیل که حدس زدن مرز تعادل و میان‌روی، کار بسیار دشواری است. افرادی که «اعتدال» و «میانه‌رو» بودن را فراموش کرده‌اند و به «تندروی» گراییده‌اند، خودشان با دست خودشان زندانی برای افکار خود ساخته‌اند.
 من به اندازه‌ی کافی در جامعه‌ی نرم افزارهای آزاد ایران پرسه زده‌ام. با زیر و بم آن به قدر کافی آشنا هستم. همه نوع نظری را هم در آن شنیده‌ام.</description>
     </item>
     
     <item>
       <title>نبود قابلیت‌های مختلف در گولنگ: جنریک</title>
-      <link>https://amirrezaghaderi.ir/blog/golang-generics/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/golang-generics/</link>
       <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/golang-generics/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/golang-generics/</guid>
       <description>فهرست مطالب  مطالب پیش‌نیاز مقدمه گولنگ جنریک ندارد؟ فلسفه‌ی گولنگ چیست؟ دست یابی به جنریک در گولنگ چرا در گولنگ نیاز به جنریک کمتر حس می‌شود؟ پیاده‌سازی جنریک‌ها در گولنگ: بسته‌بندی و بسته‌گُشایی پیاده‌سازی جنریک‌ها در گولنگ: تولید کد سخن آخر   مطالب پیش نیاز
 قبل از خواندن این نوشته، بهتر است با جنریک و شیوه‌های مختلفی که دیگر زبان‌ها آن را پیاده‌سازی کرده اند آشنا باشید.</description>
     </item>
     
     <item>
       <title>شیوه‌های مختلف پیاده سازی جنریک در زبان‌ها</title>
-      <link>https://amirrezaghaderi.ir/blog/generics/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/generics/</link>
       <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/generics/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/generics/</guid>
       <description>فهرست مطالب  مطالب پیش‌نیاز شیوه‌های مختلف پیاده سازی جنریک در زبان‌ها بسته‌بندی و بسته‌گُشایی در زمان اجرا (Boxing and Unboxing) تولید کد (Code generation) یک ریخت سازی ( Monomorphization ) پاک‌سازیِ تایپ (Type Erasure)   مطالب پیش نیاز
 در این نوشته قصد داریم شیوه‌هایی که زبان‌های مختلف برنامه‌نویسی به کمک آن جنریک‌ها را در خود پیاده سازی کرده‌اند بررسی کنیم. قبل از خواندن این نوشته، نیازمند آشنایی با یک سری مفاهیم پیش نیاز هستید.</description>
     </item>
     
     <item>
       <title>مفاهیم بنیادین تایپ سیستم ها</title>
-      <link>https://amirrezaghaderi.ir/blog/types/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/types/</link>
       <pubDate>Thu, 06 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/types/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/types/</guid>
       <description>فهرست مطالب  مقدمه تعاریف تایپ (Type) تایپ سیستم (Type System) تایپ چکینگ (Typechecking) تایپ چِکِر (Type checker) استاتیک تایپ (Static Type) داینامیک تایپ (Dynamic Type) استاتیک تایپینگ داوطلبانه (Optional Static Typing) آیا تمام زبان‌های کامپایلری، استاتیک تایپ هستند؟ کاوشگرِ تایپ (Type inference) تایپ نگاریِ صریح (Explicitly Typed) تایپ نگاریِ ضمنی (Implicitly Typed) آیا استاتیک بودن یک زبان، به معنی نوشتن تایپ در کنار متغیر است؟ زبان با تایپ مستحکم (Strong Type) زبان با تایپ سُست (Weak Type) تایپ سیستم دقیق (Sound type system) تایپ سیستم مبتنی بر نام (Nominal type system) مقایسه اجمالی بین زبان‌های استاتیک و داینامیک پُلی مورفیسم - چندریختی (Polymorphism) پلی مورفیسم تک منظوره (Ad hoc polymorphism) سربارگذاری تابع چیست؟ (Function overloading) پلی مورفیسم مبتنی بر رابطه‌ی تایپ‌ها (Subtyping) وراثت (Inheritance) سایه اندازی (Overriding) چیست؟ چرا وراثت مورد انتقاد است؟ وراثت در چه زمانی سودمند و بی‌خطر است؟ کامپوزیشن چیست؟ اجرایی نمودن کامپوزیشن اینترفیس (Interface) تایپ سیستم مبتنی بر ساختار (Structural type system) داک تایپینگ (Duck typing) پلی مورفیسم مبتنی بر پارامتر (Parametric polymorphism) جنریک (Generic) قابل پیش‌بینی نبودن تایپ‌های جایگزین در جنریک محدود کردن دامنه‌ی تایپ‌های جاگزین در جنریک سخن آخر</description>
     </item>
     
     <item>
       <title>تفاوت سرعت اندروید و آیفون در چیست؟</title>
-      <link>https://amirrezaghaderi.ir/blog/android-ios/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/android-ios/</link>
       <pubDate>Fri, 07 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/android-ios/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/android-ios/</guid>
       <description>قبل از هر چیز باید بگم که دوست ندارم این پست تبدیل به جدالی بین طرفداران اندروید و آی اُ اس بشه؛ نه تنها قصدی برای شروع چنین جدالی ندارم، بلکه دلم به حال کسانی که وقت خودشون رو با چنین دشمنی هایی هدر میدن میسوزه! افرادی که با چشم و گوش بسته از یک برند خاص طرفداری میکنن و حاضرن به خاطرش با بقیه جر و بحث کنن؛ جر و بحث هایی که اغلب مواقع منجر به دلخوری میشه؛ از خودتون سوال کنید: گوگل یا اپل پولی برای رفتار شما به حساب تون واریز میکنن؟</description>
     </item>
     
     <item>
       <title>حقیقتی در باب محبوبیت زبان های برنامه نویسی</title>
-      <link>https://amirrezaghaderi.ir/blog/tier1-langs/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/tier1-langs/</link>
       <pubDate>Thu, 30 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/tier1-langs/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/tier1-langs/</guid>
       <description>زبان های برنامه نویسی امکان ارتباط بین انسان و ماشین را فراهم کرده اند؛ و هم چون زبان های انسانی، گوناگونی زیادی در بین آن ها وجود دارد. بعضی از آن ها محبوب ترند، و بعضی ناشناخته تر؛ محبوبیت زبان های انسانی مانند انگلیسی یا چینی عموما وابسته به جمعیت، و نفوذ سیاسی و اقتصادی و فرهنگی است.
 اما چه عواملی باعث محبوبیت یک زبان برنامه نویسی می شود؟ کیفیت زبان؟ سرعت زبان؟ سادگی زبان؟&amp;hellip; راستش را بخواهید نتیجه ای که شخصا به آن رسیده ام این است:</description>
     </item>
     
     <item>
       <title>ابزارهای جدید، مشکلات بی‌پایان</title>
-      <link>https://amirrezaghaderi.ir/blog/newtools/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/newtools/</link>
       <pubDate>Mon, 26 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/newtools/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/newtools/</guid>
       <description>آیا لحظه‌ای که حس کردید عاشق برنامه‌نویسی شدید رو یادتون میاد؟ تجربه‌ای که من در این زمینه داشتم هنوز هم مثل روز جلوی چشمانم هست. یک روز یکی از معلمین دبیرستان ما روی تخته مثالی رو با کیوبیسیک حل کرد تا نشون بده چجوری میتونیم مسائل ریاضی رو به کامپیوتر بفهمونیم. همون مثال کوچیک کافی بود تا یک حس کنجکاوی عجیب در من بیدار بشه. حس کنجکاوی غریبی که کم کم به یک تشنگی بی پایان تبدیل شد؛ اکثر شب ها تا ۴-۵ صبح بیدار بودم و درباره مباحث مختلف برنامه‌نویسی مطالعه می‌کردم.</description>
     </item>
     
     <item>
       <title>نصب چندین نسخه از زبان الیکسیر در یک سیستم</title>
-      <link>https://amirrezaghaderi.ir/blog/elixir-kiex/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/elixir-kiex/</link>
       <pubDate>Mon, 12 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/elixir-kiex/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/elixir-kiex/</guid>
       <description>چند وقت پیش در همین وبلاگ درباره نصب چندین ماشینِ ارلنگ در یک سیستم صحبت کردیم. این نوشته به نوعی دنباله‌ی همون نوشته هست. برای همین پیشنهاد میکنم اول اون مطلب رو مطالعه کنید و بعد این نوشته رو بخونید.
 ارلنگ مثل جاوا، زبانی هست که روی یک ماشین مجازی اجرا میشه. ماشین مجازی ارلنگ با اسم BEAM صدا زده میشه و ماشین مجازی جاوا هم با اسم JVM معروف هست.</description>
     </item>
     
     <item>
       <title>شی گرایی، از حرف تا عمل</title>
-      <link>https://amirrezaghaderi.ir/blog/on-oop/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/on-oop/</link>
       <pubDate>Thu, 08 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/on-oop/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/on-oop/</guid>
       <description>توضیح: من در حال انتقال بلاگم هستم، برای همین نوشته‌های قبلیم در حال حاضر در دسترس نیستن ولی در روزهای آینده اون ها رو هم به بلاگ اضافه میکنم.
 تب برنامه‌نویسی فانکشنال این روزها بسیار بالاست. برنامه نویسی فانکشنال از قدیمی‌ترین شیوه‌های برنامه نویسی هست، اما اکثر برنامه‌نویس‌ها به تازگی بهش گرایش پیدا کردن؛ و مثل هر چیز جدیدی که از راه می‌رسه، حسِ «نو که میاد به بازار، کهنه میشه دل آزار» رو در دل خیلی ها جا انداخته.</description>
     </item>
     
     <item>
       <title>نصب چندین ماشین ارلنگ در یک سیستم</title>
-      <link>https://amirrezaghaderi.ir/blog/erlang-kerl/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/erlang-kerl/</link>
       <pubDate>Sat, 06 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/erlang-kerl/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/erlang-kerl/</guid>
       <description>صدها زبان برنامه‌نویسی مختلف هر سال وارد دنیای کامپیوتر میشن و اکثر اون‌ها به همون سرعتی که پدیدار شدن به فراموشی سپرده میشن. ارلنگ حدود سی سال هست که به عنوان یه زبان صنعتی (industrial) در حساس‌ترین و گسترده‌ترین سیستم‌های نرم‌افزاری استفاده میشه و حساب خودش رو پس داده. اگر بخواهید کار باهاش رو شروع کنید، مسلما اولین قدمی که باید بردارید نصب کردن پلتفرم ارلنگ هست.
 خوشبختانه نصب پلتفرم ارلنگ خیلی راحته چون ارلنگ سولوشنز به عنوان یکی از مُبلِغ‌ها و پشتیبان تجاری این پلتفرم، پکیج‌های از قبل آماده شده‌ی این پلتفرم رو براتون مهیا کرده و شما می‌تونید به آسونی ازشون استفاده کنید.</description>
     </item>
     
     <item>
       <title>چگونه یک زبان برنامه نویسی را انتخاب میکنم</title>
-      <link>https://amirrezaghaderi.ir/blog/choose-lang/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/choose-lang/</link>
       <pubDate>Sun, 01 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/choose-lang/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/choose-lang/</guid>
       <description>ما برنامه‌نویس‌ها عاشق یاد گرفتن و کار کردن با زبان‌ها و ابزارهای مختلف هستیم. من هم از این قاعده مستثنی نیستم. تو این نوشتار سعی می‌کنم توضیح بدم که من بر طبق چه فاکتورهایی یک زبان جدید رو انتخاب می‌کنم و روش وقت می‌ذارم. فقط قبل از خواندن متن پیش رو، به موارد زیر دقت داشته باشید:
 ‪-‬ این لیست یک ارزیابی کاملا «شخصی» است و هیچ توجیه علمی در پشت آن قرار ندارد.</description>
     </item>
     
     <item>
       <title>تعریف واژه های برنامه نویسی: ساده، آسان، پیچیده، قدرتمند</title>
-      <link>https://amirrezaghaderi.ir/blog/simple-easy-complex-powerful/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/simple-easy-complex-powerful/</link>
       <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/simple-easy-complex-powerful/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/simple-easy-complex-powerful/</guid>
       <description>راستش را بخواهید مطلب پیش روی شما بیشتر با هدف تولید یک «منبع» شخصی نگارش شده! یعنی اساس انتشار آن این است که من بتوانم در آینده هنگامی که نیاز به استفاده از این مفاهیم در نوشته‌های دیگرم داشتم، خواننده‌ها را به این منبع ارجاع دهم تا لازم نباشد در هر مطلب جدیدی که می‌نویسم مدام چنین مفاهیمی رو دوباره توضیح دهم.
 
 ساده (Simple) خصوصیتی که باعث شناخت و درک راحت‌تر موضوعی می‌شود.</description>
@@ -168,10 +168,10 @@
     
     <item>
       <title>سرعت، اولویت نیست!</title>
-      <link>https://amirrezaghaderi.ir/blog/speed-vs-efficiency/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/speed-vs-efficiency/</link>
       <pubDate>Fri, 13 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/speed-vs-efficiency/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/speed-vs-efficiency/</guid>
       <description>گاها در تویتر یا از طریق ایمیل، پیغام‌هایی دریافت می‌کنم با این مضمون:
 «… به نظرت کدوم زبان رو یاد بگیرم بهتره؟…»
 اگر در ابتدای یادگیری برنامه نویسیم بودم، پاسخ من این می‌بود:
@@ -183,10 +183,10 @@
     
     <item>
       <title>شروع!</title>
-      <link>https://amirrezaghaderi.ir/blog/hello-world/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/hello-world/</link>
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/hello-world/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/hello-world/</guid>
       <description>در روز‌هایی نه چندان دور که شبکه‌های اجتماعی هنوز در حد ایده‌هایی نو پا بودند، وبلاگ، اصلی‌ترین ابزاری بود که می‌شد به کمک اون خودمون رو در دنیای بزرگ اینترنت «ابراز» کنیم. من هم روزی یک وبلاگ‌نویس بودم. اون زمان‌ها وقتی از خواب بلند می‌شدید و پای کامپیوتر می‌نشستید، فیسبوکی در کار نبود تا با سرک کشیدن در زندگی دور و بری‌هاتون وقت‌تون رو تلف کنین. در عوض با اشتیاق بالایی به وبلاگ‌های مورد علاقه‌تون سر می‌زدید تا ببینید که آیا نویسنده‌ای که حتی یک بار هم تصویراش رو ندیده‌اید مطلب جدیدی منتشر کرده یا نه.</description>
     </item>
     

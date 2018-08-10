@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>جاوا on امیررضا قادری</title>
-    <link>https://amirrezaghaderi.ir/topic/%D8%AC%D8%A7%D9%88%D8%A7/</link>
+    <link>https://amirrezaghaderi.com/fa/topic/%D8%AC%D8%A7%D9%88%D8%A7/</link>
     <description>Recent content in جاوا on امیررضا قادری</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fa-IR</language>
     <lastBuildDate>Wed, 18 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://amirrezaghaderi.ir/topic/%D8%AC%D8%A7%D9%88%D8%A7/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://amirrezaghaderi.com/fa/topic/%D8%AC%D8%A7%D9%88%D8%A7/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>کالبد شکافی GraalVM</title>
-      <link>https://amirrezaghaderi.ir/blog/graalvm/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/graalvm/</link>
       <pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/graalvm/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/graalvm/</guid>
       <description>فهرست مطالب  ماشین چیست؟ (Machine) ماشین مجازی چیست؟ (VM) ماشین مجازی جاوا (JVM) GraalVm Graal Compiler Truffle SubstrateVM ابزارهای جانبی جمع بندی مطالب  در زمان نگارش این پست، هنوز ۲۴ ساعت نشده است که شرکت Oracle از VM جدید خود با اسم GraalVM رونمایی کرده. و تعداد زیادی از برنامه‌نویسان مطمئن نیستند که GraalVM دقیقا چیست و چه کاری انجام می‌دهد. در این پست قصد داریم GraalVM را کالبدشکافی کنیم&amp;hellip;</description>
     </item>
     

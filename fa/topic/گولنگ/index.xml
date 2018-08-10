@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>گولنگ on امیررضا قادری</title>
-    <link>https://amirrezaghaderi.ir/topic/%DA%AF%D9%88%D9%84%D9%86%DA%AF/</link>
+    <link>https://amirrezaghaderi.com/fa/topic/%DA%AF%D9%88%D9%84%D9%86%DA%AF/</link>
     <description>Recent content in گولنگ on امیررضا قادری</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fa-IR</language>
     <lastBuildDate>Wed, 12 Jul 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://amirrezaghaderi.ir/topic/%DA%AF%D9%88%D9%84%D9%86%DA%AF/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://amirrezaghaderi.com/fa/topic/%DA%AF%D9%88%D9%84%D9%86%DA%AF/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>نبود قابلیت‌های مختلف در گولنگ: جنریک</title>
-      <link>https://amirrezaghaderi.ir/blog/golang-generics/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/golang-generics/</link>
       <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://amirrezaghaderi.ir/blog/golang-generics/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/golang-generics/</guid>
       <description>فهرست مطالب  مطالب پیش‌نیاز مقدمه گولنگ جنریک ندارد؟ فلسفه‌ی گولنگ چیست؟ دست یابی به جنریک در گولنگ چرا در گولنگ نیاز به جنریک کمتر حس می‌شود؟ پیاده‌سازی جنریک‌ها در گولنگ: بسته‌بندی و بسته‌گُشایی پیاده‌سازی جنریک‌ها در گولنگ: تولید کد سخن آخر   مطالب پیش نیاز
 قبل از خواندن این نوشته، بهتر است با جنریک و شیوه‌های مختلفی که دیگر زبان‌ها آن را پیاده‌سازی کرده اند آشنا باشید.</description>
     </item>

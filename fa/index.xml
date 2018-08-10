@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Amirreza's blog </title>
-    <link>https://amirrezaghaderi.ir/</link>
+    <link>https://amirrezaghaderi.com/fa/</link>
     <language>en-US</language>
     <author>Amirreza Ghaderi</author>
     <rights>Except where otherwise noted, content on this site is licensed under a Attribution-NonCommercial 4.0 International license.</rights>
@@ -10,10 +10,10 @@
     
     <item>
       <title>کالبد شکافی GraalVM</title>
-      <link>https://amirrezaghaderi.ir/blog/graalvm/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/graalvm/</link>
       <pubDate>April 18, 2018</pubDate>
       <author>Amirreza Ghaderi</author>
-      <guid>https://amirrezaghaderi.ir/blog/graalvm/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/graalvm/</guid>
       <description>
 
 &lt;p&gt;&lt;a name=&#34;toc&#34;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -281,10 +281,10 @@
     
     <item>
       <title>تایپ هایی که به آن ایمان داریم!</title>
-      <link>https://amirrezaghaderi.ir/blog/in-types-we-trust/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/in-types-we-trust/</link>
       <pubDate>March 5, 2018</pubDate>
       <author>Amirreza Ghaderi</author>
-      <guid>https://amirrezaghaderi.ir/blog/in-types-we-trust/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/in-types-we-trust/</guid>
       <description>
 
 &lt;p&gt;&lt;a name=&#34;toc&#34;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -527,10 +527,10 @@
     
     <item>
       <title>دیتا تایپ‌های جبری (‌‌ADT)</title>
-      <link>https://amirrezaghaderi.ir/blog/adt/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/adt/</link>
       <pubDate>February 6, 2018</pubDate>
       <author>Amirreza Ghaderi</author>
-      <guid>https://amirrezaghaderi.ir/blog/adt/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/adt/</guid>
       <description>
 
 &lt;p&gt;&lt;a name=&#34;toc&#34;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -944,10 +944,10 @@ A ∪ B = { x, y, 3, 4, 5 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     
     <item>
       <title>شرکت شما، خانواده‌ی شما نیست</title>
-      <link>https://amirrezaghaderi.ir/blog/not-family/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/not-family/</link>
       <pubDate>August 9, 2017</pubDate>
       <author>Amirreza Ghaderi</author>
-      <guid>https://amirrezaghaderi.ir/blog/not-family/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/not-family/</guid>
       <description>
 
 &lt;p&gt;اگر مقام‌های بالادستیِ تان مدام از این حرف می‌زنند که شما برایشان مثل یک «خانواده» هستید، حواس‌تان را خوب جمع کنید! وقتی آن‌ها می‌گویند شما مانند خانواده‌شان هستید، منظورشان این نیست که در هر شرایطی از شما حمایت خواهند کرد و بی هیچ چون و چرایی شما را دوست خواهند داشت (مانند کاری که یک «خانواده‌ی واقعی» انجام می‌دهد)، بلکه احتمالا انگیزه‌ی دیگری دارند: اینکه شما را راضی به از خودگذشتگی هایی کنند که به طور عادی در محیطی به غیر از محیط خانواده زیر بارشان نخواهید رفت!&lt;/p&gt;
@@ -978,10 +978,10 @@ A ∪ B = { x, y, 3, 4, 5 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     
     <item>
       <title>جامعه‌ی نرم‌افزارهای آزاد: از ما بهتران!</title>
-      <link>https://amirrezaghaderi.ir/blog/fsfiran/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/fsfiran/</link>
       <pubDate>July 23, 2017</pubDate>
       <author>Amirreza Ghaderi</author>
-      <guid>https://amirrezaghaderi.ir/blog/fsfiran/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/fsfiran/</guid>
       <description>
 
 &lt;p&gt;اعتدال! چه واژه‌ی زیبایی؛ و چقدر پیچیده! پیچیده به این دلیل که حدس زدن مرز تعادل و میان‌روی، کار بسیار دشواری است. افرادی که «اعتدال» و «میانه‌رو» بودن را فراموش کرده‌اند و به «تندروی» گراییده‌اند، خودشان با دست خودشان زندانی برای افکار خود ساخته‌اند.&lt;/p&gt;
@@ -1088,10 +1088,10 @@ A ∪ B = { x, y, 3, 4, 5 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     
     <item>
       <title>نبود قابلیت‌های مختلف در گولنگ: جنریک</title>
-      <link>https://amirrezaghaderi.ir/blog/golang-generics/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/golang-generics/</link>
       <pubDate>July 12, 2017</pubDate>
       <author>Amirreza Ghaderi</author>
-      <guid>https://amirrezaghaderi.ir/blog/golang-generics/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/golang-generics/</guid>
       <description>
 
 &lt;p&gt;&lt;a name=&#34;toc&#34;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -1566,10 +1566,10 @@ $ generic2
     
     <item>
       <title>شیوه‌های مختلف پیاده سازی جنریک در زبان‌ها</title>
-      <link>https://amirrezaghaderi.ir/blog/generics/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/generics/</link>
       <pubDate>July 11, 2017</pubDate>
       <author>Amirreza Ghaderi</author>
-      <guid>https://amirrezaghaderi.ir/blog/generics/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/generics/</guid>
       <description>
 
 &lt;p&gt;&lt;a name=&#34;toc&#34;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -1765,10 +1765,10 @@ String x = (String) list.get(0);
     
     <item>
       <title>مفاهیم بنیادین تایپ سیستم ها</title>
-      <link>https://amirrezaghaderi.ir/blog/types/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/types/</link>
       <pubDate>July 6, 2017</pubDate>
       <author>Amirreza Ghaderi</author>
-      <guid>https://amirrezaghaderi.ir/blog/types/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/types/</guid>
       <description>
 
 &lt;p&gt;&lt;a name=&#34;toc&#34;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -2615,10 +2615,10 @@ start_match&amp;lt;Sporter&amp;gt;( s );
     
     <item>
       <title>تفاوت سرعت اندروید و آیفون در چیست؟</title>
-      <link>https://amirrezaghaderi.ir/blog/android-ios/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/android-ios/</link>
       <pubDate>April 7, 2017</pubDate>
       <author>Amirreza Ghaderi</author>
-      <guid>https://amirrezaghaderi.ir/blog/android-ios/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/android-ios/</guid>
       <description>
 
 &lt;p&gt;قبل از هر چیز باید بگم که دوست ندارم این پست تبدیل به جدالی بین طرفداران اندروید و آی اُ اس بشه؛ نه تنها قصدی برای شروع چنین جدالی ندارم، بلکه دلم به حال کسانی که وقت خودشون رو با چنین دشمنی هایی هدر میدن میسوزه! افرادی که با چشم و گوش بسته از یک برند خاص طرفداری میکنن و حاضرن به خاطرش با بقیه جر و بحث کنن؛ جر و بحث هایی که اغلب مواقع منجر به دلخوری میشه؛ از خودتون سوال کنید: گوگل یا اپل پولی برای رفتار شما به حساب تون واریز میکنن؟&lt;/p&gt;
@@ -2770,10 +2770,10 @@ start_match&amp;lt;Sporter&amp;gt;( s );
     
     <item>
       <title>حقیقتی در باب محبوبیت زبان های برنامه نویسی</title>
-      <link>https://amirrezaghaderi.ir/blog/tier1-langs/</link>
+      <link>https://amirrezaghaderi.com/fa/blog/tier1-langs/</link>
       <pubDate>March 30, 2017</pubDate>
       <author>Amirreza Ghaderi</author>
-      <guid>https://amirrezaghaderi.ir/blog/tier1-langs/</guid>
+      <guid>https://amirrezaghaderi.com/fa/blog/tier1-langs/</guid>
       <description>
 
 &lt;p&gt;زبان های برنامه نویسی امکان ارتباط بین انسان و ماشین را فراهم کرده اند؛ و هم چون زبان های انسانی، گوناگونی زیادی در بین آن ها وجود دارد. بعضی از آن ها محبوب ترند، و بعضی ناشناخته تر؛ محبوبیت زبان های انسانی مانند انگلیسی یا چینی عموما وابسته به جمعیت، و نفوذ سیاسی و اقتصادی و فرهنگی است.&lt;/p&gt;
