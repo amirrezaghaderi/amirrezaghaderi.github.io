@@ -6,10 +6,20 @@
     <description>Recent content in برنامه نویسی on امیررضا قادری</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fa-IR</language>
-    <lastBuildDate>Wed, 18 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://amirrezaghaderi.com/fa/topic/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%86%D9%88%DB%8C%D8%B3%DB%8C/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>آبجکت های شما، سرورهای شما</title>
+      <link>https://amirrezaghaderi.com/fa/blog/objects-servers/</link>
+      <pubDate>Sun, 03 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://amirrezaghaderi.com/fa/blog/objects-servers/</guid>
+      <description>فهرست مطالب  گواهی رفع مسئولیت :) مقدمه داستان شی گرایی ایده پینشهادات  بعد از Constructor دیگر چیزی را تغییر ندهید آبجکت‌ها را تک وظیفه‌ای کنید از Dependency Injection استفاده کنید Satet را از خارج به آبجکت تزریق کنید به public و private اکتفا نکنید اینترفیس، اینترفیس، اینترفیس از Inheritance استفاده نکنید حذف متدهای set، و استفاده از دیتابیس!  سخن آخر  
+گواهی رفع مسئولیت :) نوشته‌ی زیر، فقط و فقط حاوی تجربیات و مطالعات شخصی من است.</description>
+    </item>
     
     <item>
       <title>کالبد شکافی GraalVM</title>

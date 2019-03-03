@@ -6,7 +6,417 @@
     <language>en-US</language>
     <author>Amirreza Ghaderi</author>
     <rights>Except where otherwise noted, content on this site is licensed under a Attribution-NonCommercial 4.0 International license.</rights>
-    <updated>Wed, 18 Apr 2018 00:00:00 UTC</updated>
+    <updated>Sun, 03 Mar 2019 00:00:00 UTC</updated>
+    
+    <item>
+      <title>آبجکت های شما، سرورهای شما</title>
+      <link>https://amirrezaghaderi.com/fa/blog/objects-servers/</link>
+      <pubDate>March 3, 2019</pubDate>
+      <author>Amirreza Ghaderi</author>
+      <guid>https://amirrezaghaderi.com/fa/blog/objects-servers/</guid>
+      <description>
+
+&lt;p&gt;&lt;a name=&#34;toc&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;فهرست-مطالب&#34;&gt;فهرست مطالب&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#disclaimer&#34;&gt;گواهی رفع مسئولیت :)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#intro&#34;&gt;مقدمه&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#story&#34;&gt;داستان شی گرایی&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#idea&#34;&gt;ایده&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#suggestions&#34;&gt;پینشهادات&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#constructor&#34;&gt;بعد از Constructor دیگر چیزی را تغییر ندهید&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#single-res&#34;&gt;آبجکت‌ها را تک وظیفه‌ای کنید&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#di&#34;&gt;از Dependency Injection استفاده کنید&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#state-inject&#34;&gt;Satet را از خارج به آبجکت تزریق کنید&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#p-p&#34;&gt;به public و private اکتفا نکنید&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#interface&#34;&gt;اینترفیس، اینترفیس، اینترفیس&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#inheritance&#34;&gt;از Inheritance استفاده نکنید&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#db-objects&#34;&gt;حذف متدهای set، و استفاده از دیتابیس!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#end&#34;&gt;سخن آخر&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a name=&#34;disclaimer&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;گواهی-رفع-مسئولیت&#34;&gt;گواهی رفع مسئولیت :)&lt;/h2&gt;
+
+&lt;p&gt;نوشته‌ی زیر، فقط و فقط حاوی تجربیات و مطالعات شخصی من است. هیچ دلیلی ندارد که شما حتما با من هم نظر باشید و یا از نکاتی که در این نوشته گفته شده پیروی کنید. این نوشته فقط برای این است که با تفکرات مختلف درباره شی‌گرایی آشنا شوید. شاید در جایی بدردتان خورد!&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;intro&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;مقدمه&#34;&gt;مقدمه&lt;/h2&gt;
+
+&lt;p&gt;قبلا در یک &lt;a href=&#34;https://amirrezaghaderi.com/fa/blog/on-oop/&#34;&gt;نوشته&lt;/a&gt; جداگانه راجع به پیچیدگی‌های OOP صحبت کرده بودم. در گذر زمان، متوجه شدم که بیشتر این پیچیدگی‌ها از جانب OOP نیست و ساخته و پرداخته‌ی مطالب و آموزش‌های نامناسب‌ای هستند که در طی سال‌ها به خورد برنامه‌نویس‌ها داده شده.&lt;/p&gt;
+
+&lt;p&gt;پس قبل از هر چیزی، بیایید یک از سوتفاهم‌های مرسوم درباره شی ‌گرایی را با هم بررسی کنیم:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;شی‌گرایی یعنی وجود class&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;خیر. شی‌گرایی یعنی برنامه نویسی مبتنی بر آبجکت‌ها. و class فقط یک روش ساخت آبجکت‌ هاست. فقط «یک» روش، و نه تنها روش!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;وراثت جزیی از شی‌گرایی است&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;خیر. وراثت یکی از چندین مکانیزم در دسترس برای تشریح رابطه‌ی بین تایپ‌ها برای «تایپ سیستم» است.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;پلی مورفیسم جزیی از شی‌گرایی است&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;خیر. پلی مورفیسم یکی از مکانیزم های «تایپ سیستم» است که می‌توان با اتکا به آن، در موقعیت‌های یکسان از رفتارهای متفاوتی بهره برد. (&lt;a href=&#34;https://amirrezaghaderi.com/fa/blog/types/#polymorphism&#34;&gt;توضیح کامل آن در مقاله‌ی دیگری داده شده&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;مجوز‌های دسترسی مثل public یا private جزیی از شی گرایی است&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;خیر. جلوگیری از دسترسی به State داخلی یک آبجکت از اصول اساسی شی گرایی است؛ و مجوزهایی مثل private و public تنها یکی از روش های پیاده سازی چنین ایده ای هستند. و نه تنها روش!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;پس شی گرایی چیست؟&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;برنامه نویسی مبتنی بر آبجکت‌ها!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;آبجکت چیست؟&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;واحد‌هایی فعال و کاملا مستقل، که تنها از طریق «انتقال پیام» قادر به ارتباط با یکدیگر می‌باشند.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;فعال، به این معنی که این واحد ها قادر به انجام کار می‌باشند. کارهایی که یک آبجکت قادر به انجام آن است در متدهایش تعریف می‌شود.&lt;/li&gt;
+&lt;li&gt;مستقل، به این معنی که هر آبجکت مانند یه جعبه‌ی دربسته است و آبجکت‌های دیگر نباید قادر به ویرایش State درونی اش باشند.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;زبان شی‌گرا چیست؟&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;زبانیست که تمام اجزای آن تشکیل شده از آبجکت‌ها باشند:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;توابع، آبجکت هستند.&lt;/li&gt;
+&lt;li&gt;متغیرها، آبجکت هستند.&lt;/li&gt;
+&lt;li&gt;مقادیر مانند &lt;code&gt;23&lt;/code&gt; یا &lt;code&gt;&amp;quot;hi&amp;quot;&lt;/code&gt; آبجکت هستند.&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;البته در پیاده سازی واقعی از زبان‌های برنامه نویسی، ممکن است به دلایل مختلف یک سری از این شرایط برقرار نباشد. برای مثال، مقادیر int در زبان جاوا به صورت آبجکت ارائه نشده‌اند.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;story&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;داستان-شی-گرایی&#34;&gt;داستان شی گرایی&lt;/h2&gt;
+
+&lt;p&gt;عبارت object-oriented programming توسط یکی از دانشمندان معروف دنیای کامپیوتر آقای &lt;a href=&#34;https://en.wikipedia.org/wiki/Alan_Kay&#34;&gt;Alan Kay&lt;/a&gt; به سر زبان ها انداخته شد. تا قبل از آن مفهومی تحت عنوان Object در زبان &lt;a href=&#34;https://en.wikipedia.org/wiki/Simula&#34;&gt;Simula&lt;/a&gt; وجود داشت؛ حتی مفاهیمی مانند‌ class یا inheritance از زبان Simula آمده‌اند، ولی اینطور نبود که افراد مشخصا مبتنی بر آبجکت‌ها برنامه نویسی کنند. (مانند فانکشن که در همه زبان‌ها هست، ولی همه‌ی زبان ها فانکشنال نیستند!)&lt;/p&gt;
+
+&lt;p&gt;Alan Kay ایده‌هایش را جمع کرد و به کمک دوستانش زبان &lt;a href=&#34;https://en.wikipedia.org/wiki/Smalltalk&#34;&gt;Smalltalk&lt;/a&gt; را ساخت. Simula و  Smalltalk دو دید متفاوت به شی‌گرایی دارند.&lt;/p&gt;
+
+&lt;p&gt;Simula شی‌گرایی را بیشتر به عنوان «ساختار کدها» و در هارمونی با «تایپ سیستم» در نظر می‌گیرد، و Smalltalk شی‌گرایی را به عنوان شیوه ای برای ساخت یک سیستم زنده، داینامیک، و مقیاس پذیر تصور می‌کند. یکی توجه اصلی اش مدل نوشتن کدهاست، و دیگری مدل اجرای کدها! برای همین است که Smalltalk تنها یک زبان نیست و در واقع به عنوان یک Environment نرم افزاری عرضه می‌شود که بیشتر شبیه یک OS کامل است! در حال حاضر این دو زبان به عنوان مرجع تمام زبان‌های OOP شناخته می‌شوند.&lt;/p&gt;
+
+&lt;p&gt;پ.ن: Alan Kay ، و Ole-Johan Dahl و Kristen Nygaard (سازندگان Simula) همگی جزو برندگان جایزه Turing می‌باشند.&lt;/p&gt;
+
+&lt;p&gt;فعلا از این‌ها بگذریم&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;چند ماه پیش، در تویترم نوشتم که من شی‌گرایی واقعی را از &lt;a href=&#34;https://en.wikipedia.org/wiki/Erlang_(programming_language)&#34;&gt;ارلنگ&lt;/a&gt; یاد گرفتم! و در ادامه‌اش توضیحاتی درباره اینکه چه منظوری از گفتن این حرف داشتم اضافه کردم. برای آن توییت بازخوردهای مثبت و منفی زیادی گرفتم؛ که کاملا قابل درک بود و خودم هم انتظارش را داشتم! اما حس میکنم که اون توییت‌ها نتوانسته باشند منظور واقعی من را انتقال بدند.&lt;/p&gt;
+
+&lt;p&gt;دلیل‌اش را هم می‌دانم: اول اینکه تویتر جای مناسبی برای باز کردن چنین موضوعی نیست و نمی‌توان به خوبی مباحث را در آن شرح داد. و دوم اینکه من به غلط انتظار داشتم که همه با ارلنگ و فلسفه پشت آن آشنایی داشته باشند و خود به خود متوجه منظور من بشوند؛ که انتظار بی خودی بوده!&lt;/p&gt;
+
+&lt;p&gt;خوشبختانه چند روز پیش از نگارش این مطلب، مشغول تویتر گردی بودم که ناگهان یک توییت نظرم رو جلب کرد. یک برنامه نویسی، آبجکت‌ها را به «وب سرویس‌» ها تشبیه کرده بود! آنجا بود که گفتم لعنتی، این همان چیزی بود که من در فکرم داشتم ولی نمی‌توانستم به درستی ابرازش کنم. و تازه یادم افتاد که چرا زودتر این قضیه به فکرم نرسیده بود، چون Alan Kay خودش به طور مشخص چنین مثالی را درباره شی‌گرایی زده بود: اینکه آبجکت‌ها را باید مثل کامپیوترهای مستقل‌ای تصور کرد که در یک شبکه قرار دارند!&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;I thought of objects being like biological cells and/or individual
+computers on a network, only able to communicate with messages.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;یک سیستم شی‌گرا، به نوعی مانند اینترنت است! کامپیوتر هایی که در یک شبکه عظیم قرار گرفته اند و با هم «تبادل پیام» می‌کنند! در حقیقت ARPAnet (پروژه‌ای که بعد ها تبدیل به اینترنت شد) جزو پروژه‌هایی بوده که Alan Kay از آن الهام گرفته بود!&lt;/p&gt;
+
+&lt;p&gt;Alan Kay می‌گوید ایده‌ای که براش اهمیت داشته فقط «ارتباط از طریق انتقال پیام بوده» (Message passing) و از اینکه از کلمه Object برای توصیف چنین موضوعی استفاده کرده پشیمان هست چون این کلمه باعث گمراهی برنامه نویسان شده!&lt;/p&gt;
+
+&lt;p&gt;حالا با تمام این توصیفات، اولین زبانی که اسمش به ذهن تان میرسد چیست؟ متوجه شدید چرا من شی‌گرایی را از ارلنگ یاد گرفتم؟ زبانی که برنامه شما در قالب اجزای زنده ای توصیف می‌شوند که تنها از طریق انتقال پیام با یکدیگر در ارتباط اند!&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;idea&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;ایده&#34;&gt;ایده&lt;/h2&gt;
+
+&lt;p&gt;چیزی که من می‌خوام پیشنهاد بدهم برای تمام زبان‌های شی ‌گرا قابل اجراست. در هر زبان شی‌گرایی که دوست دارید می‌توانید از این ایده استفاده کنید. آن ایده این است که بیاییم «دیدگاه» خودمان درباره آبجکت‌ها را عوض کنیم!&lt;/p&gt;
+
+&lt;p&gt;بیاییم اینطور تصور کنیم که هر شی، یک وب سرور مستقل است. یا یک مایکرو سرویس است!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;سرور = آبجکت&lt;/li&gt;
+&lt;li&gt;کلاینت = کدی که قرار است از آبجکت استفاده کند (ممکن است خودش یک آبجکت باشد)&lt;/li&gt;
+&lt;li&gt;فراخانی های http = فراخانی متد&lt;/li&gt;
+&lt;li&gt;پارامترهای GET یا POST = پارامترهای متد&lt;/li&gt;
+&lt;li&gt;API وب سرویس = اینترفیس‌ها&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;تصور کنید که هر آبجکت، مانند سروری است که به طور مستقل فعالیت می‌کند و IP خودش را دارد.&lt;/p&gt;
+
+&lt;p&gt;اینطور تصور کنید که هر متد، همانند یک route در API سرور شماست! و پارامترهای GET یا POST که در آن route پذیرش می‌شوند، همان پارامترهایی هستند که شما در تعریف متد خود مشخص کرده‌اید.&lt;/p&gt;
+
+&lt;p&gt;آیا یک سرور، می‌تواند به حافظه‌ی رم سرور دیگر دسترسی داشته باشد و آن را تغییر دهد؟&lt;/p&gt;
+
+&lt;p&gt;یا حتی تفکیک وظایف سرور ها را در نظر بگیرید؛ یکی وب سرور است. یکی سرور DNS است. یکی سرور دیتابیس است&amp;hellip; هر کدام وظیفه مشخصی دارند. آبجکت‌ها هم باید با وظایف مشخصی طراحی شوند.&lt;/p&gt;
+
+&lt;p&gt;این کاری است که من برای کدهای شی‌گرایم انجام می‌دهم و تا الان از نتیجه آن راضی بوده‌ام. فقط همین قضیه که دیدگاه خودم را درباره آبجکت‌ها تغییر داده‌ام، به شکل جالبی یک سری ساید افکت به همراه خودش داشته که باعث شده کدهای بهتری بنویسم. بیایید تعدادی از این موارد را با هم مرور کنیم.&lt;/p&gt;
+
+&lt;p&gt;در طول خواندن ادامه این نوشته، به طور مداوم این موضوع را در مغز خود تکرار کنید: هر آبجکت مانند سروری است که در یک کامپیوتر مستقل میزبانی می‌شود!&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;suggestions&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;پینشهادات&#34;&gt;پینشهادات&lt;/h2&gt;
+
+&lt;p&gt;&lt;a name=&#34;constructor&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;بعد-از-constructor-دیگر-چیزی-را-تغییر-ندهید&#34;&gt;بعد از Constructor دیگر چیزی را تغییر ندهید&lt;/h3&gt;
+
+&lt;p&gt;وقتی یک سرور را بالا می‌آورید، وسط کار یکدفعه کدهای آن را تغییر نمی‌دهید. آن سرور بعد از بالا آمدن دیگر بدون تغییر خواهد بود؛ مگر اینکه آن را ری‌استارت کنید. ری‌استارت کردن هم در واقع به معنی این است که شما یک سرور جدید در حافظه کامپیوتر ساخته‌اید!&lt;/p&gt;
+
+&lt;p&gt;برای اجرای هر سرویس، باید موقع استارت کردن آن تمام کانفیگ‌ها را بخوانید تا بتوانید به درستی سرویس را بالا بیاورید. برای ساخت یک آبجکت نیز باید  تمام کانفیگ‌های مورد نیازش را به هنگام ساخت به آن ارائه کنید. این کاری است که وظیفه‌ی آن را Constructor به عهده دارد.&lt;/p&gt;
+
+&lt;p&gt;اگر بعد از مقدار دهی اولیه، دیگر State داخلی آبجکت را تغییر ندهیم، می توانیم با خیال راحت و بدون ترس از  Race condition از آن آبجکت در سناریوهای همروند استفاده کنیم.&lt;/p&gt;
+
+&lt;p&gt;پیشنهاد من این است که به جای این کد:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Person&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;setName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;setAge&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getInfo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;format&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;%s is %d years old.&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// ------------------------------
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;person&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Amir&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setAge&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getInfo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Sara&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setAge&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getInfo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;سعی کنید از کدی مثل کد زیر استفاده کنید:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Person&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getInfo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;format&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;%s is %d years old.&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// ------------------------------
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;amir&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Amir&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;amir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getInfo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sara&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Sara&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sara&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getInfo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;در مثال اول، هیچ کدام از تغییراتی که روی آبجکت اعمال می‌کنید (توسط set ها) در یک محیط همروند گارانتی نخواهند داشت. در حالی که آبجکت‌های مثال دوم براحتی در محیط های همروند نیز قابل استفاده خواهند بود.&lt;/p&gt;
+
+&lt;p&gt;هر آبجکت، هویت ثابتی دارد. از یک آبجکت برای بیان چندین موجودیت استفاده نکنید. اگر کلاس Person دارید و می خواهید ۵ نفر را با آن ابراز کنید، ۵ نمونه از روی آن بسازید. اگر کلاس Cat دارید و می خواهید ۲ گربه را با آن ابراز کنید، ۲ نمونه از روی Cat بسازید. موجودیت‌های برنامه را شناسایی کنید، و ببینید به چند مورد از آن‌ها نیاز دارید و به همان اندازه نمونه‌های مجزا تولید کنید. از ساخت نمونه‌هایی که چندین موجودیت را ابراز می‌کنند بپرهیزید.&lt;/p&gt;
+
+&lt;p&gt;فیلدهای داخل هر کلاس را به عنوان پارامتر‌ها و یا کانفیگ‌هایی که آن کلاس نیاز دارد در نظر بگیرید. از آن‌ها مانند یک کانتینر که بسته بندی کننده‌ی داده‌هاست استفاده نکنید چون در این حالت کلاس شما بیشتر شبیه یک «دیتا استراکچر» خواهد تا اینکه هویتی فعال و «عامل» داشته باشد.&lt;/p&gt;
+
+&lt;p&gt;همچنین یادتان باشد که Constructor قرار است state آبجکت را مقدار دهی اولیه کند؛ نباید درون Constructor از کدهای عملیاتی/الگوریتمی استفاده کرد. کار Constructor فقط مقدار دهی اولیه است و تمام.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;single-res&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;آبجکت-ها-را-تک-وظیفه-ای-کنید&#34;&gt;آبجکت‌ها را تک وظیفه‌ای کنید&lt;/h3&gt;
+
+&lt;p&gt;به نظر من، کلاس ایده آل کلاسی است که دو متد بیشتر نداشته باشه! یک Constructor که State آبجکت را مقدار دهی می‌کند، و یک متد دیگر که عمل اصلی پردازش را به عهده دارد! یعنی هر کلاس، مترادف با یک «تابع» شود! مسلما نمی‌توانیم همیشه چنین آبجکت کوچکی بسازیم. ولی خوب است که حداقل &lt;em&gt;سعی&lt;/em&gt; کنیم آبجکت‌ها را کوچیک طراحی کنیم. درست مثل مایکروسرویس ‌ها که هر کدام تلاش دارند فقط یک کار مشخص را انجام دهند.&lt;/p&gt;
+
+&lt;p&gt;منظورم از کوچک کردن آبجکت‌ها این نیست که به زور تعداد متدها را کم کنیم. خیر. در عوض باید سعی کنیم آبجکت را به سمت «تک وظیفه‌ای» شدن پیش ببریم. هر چه لیست وظایفی که آبجکت به عهده دارد کمتر باشد، خود به خود کوچک خواهد شد! هر چه آبجکت تک وظیفه‌ای تر شود، مستقل تر خواهد شد و تست کردن آن نیز راحت تر خواهد بود.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;di&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;از-dependency-injection-استفاده-کنید&#34;&gt;از Dependency Injection استفاده کنید&lt;/h3&gt;
+
+&lt;p&gt;کلاس بهتر است در بدنه‌ی خودش از new استفاده نکند! به زبانی دیگر، کلاس نباید خودش به طور مستقیم آبجکت‌هایی که به آن‌ها نیاز دارد را نمونه‌سازی کند. این نمونه‌ها باید از بیرون کلاس به آن تزریق شوند! در غیر این صورت این دو آبجکت به شدت به هم وابسته خواهند شد. یک راه حل ساده این است که این نمونه‌ها از طریق Constructor وارد کلاس شوند.&lt;/p&gt;
+
+&lt;p&gt;به کمک DI، آبجکت‌ها می‌توانند به طور مستقل تست شوند. اگر آبجکت A درون بدنه‌ی خودش نمونه‌ای از آبجکت B ساخته باشد، آنوقت هنگام تست کردن A باید ابتدا میرفتیم و آن شی ‌B را تست میکردیم!&lt;/p&gt;
+
+&lt;p&gt;دقت کنید که تست در اینجا موضوع بسیار مهمی است. نه از این جهت که درست کار کردن کدهای ما را می‌سنجد؛ بلکه به خاطر اینکه خود عملیات تست کردن، نوعی «استفاده» از کدهای شماست! یعنی اگر بتوانید کدی را به طور مستقل تست کنید، می‌توانید به طور مستقل از آن استفاده کنید! بنابراین هر چه تست کردن کدهای‌تان راحت تر باشد، نشان دهنده معاری بهتر کدهای تان است!&lt;/p&gt;
+
+&lt;p&gt;پس می‌توانیم اینطور بگوییم که DI می‌تواند به شما کمک کند که وابستگی بین آبجکت‌ها را کم کنید! و این جزو اهدافی است که باید به دنبال آن باشید.&lt;/p&gt;
+
+&lt;p&gt;پ.ن: زیاد خودتان را با فریم‌ورک های DI درگیر نکنید. شما براحتی می‌توانید برای DI از Constructor ها استفاده کنید. لازم نیست خودتان را به هیچ فریم ورکی وابسته کنید. ما در دنیای امروز برنامه نویسی به اندازه کافی به فریم ورک های مختلف وابسته شده ایم! ۴ خط کد بیشتر بنویسید، منت قصاب را نکشید!&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;state-inject&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;state-را-از-خارج-آبجکت-به-آن-تزریق-کنید&#34;&gt;State را از خارج آبجکت به آن تزریق کنید&lt;/h3&gt;
+
+&lt;p&gt;درست مانند DI که با آن نمونه‌های مورد نیاز آبجکت را از بیرون به آن تزریق می‌کنید، من پیشنهاد می‌کنم تا حد امکان State را هم از بیرون به آبجکت تزریق کنید و در داخل آبجکت State کمتری نگه داری نمایید!&lt;/p&gt;
+
+&lt;p&gt;فرضا در مثال محاسبه BMI، پارامترهای مورد نیاز را از بیرون کلاس به آن پاس دهید. آن هم در همان لحظه‌ای که می خواهید روی آن‌ها کاری انجام دهید. مثلا به جای این کار:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setAge&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setHeight&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;180&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setWeight&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;90&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;calculateBMI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;از چنین روشی استفاده کنید:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;calculateBMI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;180&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;90&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;در این مثال، شما از ذخیره حداقل سه فیلد در درون آبجکت بی‌نیاز شدید. حالا آبجکت State کمتری در خود نگه داشته و هر چه State داخلی آبجکت کمتر باشد، نگه داری و نظارت روی آن‌ها نیز راحت‌تر خواهد بود.  می توانید این آبجکت را براحتی در کدهای همروند شرکت دهید، چون دیگر State ای داخل آبجکت وجود ندارد که بخواهید نگران Race condition باشید!&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;p-p&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;به-public-و-private-اکتفا-نکنید&#34;&gt;به public و private اکتفا نکنید&lt;/h3&gt;
+
+&lt;p&gt;من فکر میکنم تمام فیلدها باید private باشند، و تمام متدها public&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;امیررضا، این مسخره‌ترین پیشنهادی بود که ازت شنیدیم! تو اصلی ترین موضوع شی‌گرایی را زیر سوال بردی! تو هیچی از شی‌گرایی حالیت نیست!&lt;/p&gt;
+
+&lt;p&gt;همممم&amp;hellip; بذارید در این باره کمی در زبان‌های برنامه نویسی به گشت و گذار بپردازیم:&lt;/p&gt;
+
+&lt;p&gt;در Smalltalk که به نوعی مرجعی برای تمام زبان‌های OOP تلقی می‌شود، اصلا کلید واژه‌هایی تحت عنوان private یا public وجود ندارد! زبان به طور پیشفرض اینطور تصور می‌کند که همه‌ی فیلدها حالت private دارند و همه متدها حالت public. جالب تر می دانید چیست؟ اینکه حتی اعضای private هم واقعا private نیستند و اگر بخواهید می توانید براحتی به آن‌ها دسترسی داشته باشید! این مدل طراحی Smalltalk تصادفی نبوده و از قصد به این شکل ساخته شده است!&lt;/p&gt;
+
+&lt;p&gt;در زبان‌هایی مثل پایتون یا جاوا اسکریپت یا کاتلین هم متدها به صورت پیشفرض public هستند. و چیزی که خیلی‌ها نمی دانند این است که تقریبا در بیشتر زبان‌ها، حتی اگر اعضا را به شکل private تعریف کنید باز هم می‌شود به طور غیر مستقیم به آن اعضا دسترسی داشت!&lt;/p&gt;
+
+&lt;p&gt;سوتفاهم در اینجا به موضوع Data hiding برمی‌گردد و برداشت اشتباه برنامه نویسان از آن! Data hiding طوری به برنامه نویسان تدریس شده که فکر می‌کنند بحث اصلی سر قایم کردن اعضای کلاس است! چه چیزی را قایم کنید؟ از دست چه کسی قایم کنید؟ مگر کدی می‌تواند به طور خودسر بیاید از اعضای یک کلاس استفاده کند؟ شما اصلا تمام اعضای کلاس را public کن، تا زمانی که کدی در جایی نوشته نشود و مشخصا این اعضا را فراخانی نکند هیچ مشکلی پیش نخواهد آمد.&lt;/p&gt;
+
+&lt;p&gt;آقای &lt;a href=&#34;https://en.wikipedia.org/wiki/Martin_Fowler_(software_engineer)&#34;&gt;Martin Fowler&lt;/a&gt; می‌گوید ایده Data hiding این نیست که اعضای یک آبجکت را قایم کنید. واژه‌هایی مثل private یا public صرفا برای این هستند که اگر بقیه برنامه نویس‌ها کدهای شما را مطالعه کردند، بدانند که نباید روی اعضای private حساب باز کنند چون آن‌ها ممکن است هر لحظه دچار تغییر شوند. ایده اصلی Data hiding این است که آبجکت‌ها به State داخلی همدیگر کاری نداشته باشند. همین. (در حقیقت ایده اصلی Encapsulation است).&lt;/p&gt;
+
+&lt;p&gt;مثلا پایتون کلا اعضای private ندارد! در بیشتر زبان‌ها عرف این است که یه آندرلاین در اول اسم اعضای private می‌نویسند. در پایتون هم این چنین است. و کامیونتی پایتون اعتقاد دارد تا همین حد کافیست تا دیگر برنامه‌نویس ها متوجه شوند که نباید روی این اعضا حساب باز کنند. اینطور نیست که مردم آن آندرلاین اول اسامی را ببینند و بگویند چه خوب، یه فیلد private پیدا کرده‌ام، بهتر است حتما از آن استفاده کنم تا با دست خودم به کدهایم گند بزنم!&lt;/p&gt;
+
+&lt;p&gt;حالا چرا پیشنهاد میکنم که متدها را به طور public طراحی کنید؟ مسلما اینکه همینطور بیخود و بی جهت هر متدی که قرار است بنویسیم را به طور public طراحی کنیم، هیچ سودی به حال ما نخواهد داشت. پینشهاد من بخاطر این است که این قضیه بتواند «محرک» ای باشد تا استایل کد نویسی شما را تغییر دهد! منظورم چیست؟&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;وقتی یک متد private می‌نویسیم، به احتمال زیاد به دلیل این بوده که آن متد State رو تغییر می داده و ما نمی خواستیم که از بیرون در دسترس باشد.&lt;/li&gt;
+&lt;li&gt;وقتی یک متد private می‌نویسیم، تست کردن آن متد غیر ممکن یا سخت خواهد شد. کدی که نشود آن را تست کرد، یک کد غیر مطمئن است.&lt;/li&gt;
+&lt;li&gt;وقتی یک متد public می‌نویسیم، می‌دانیم که نباید طوری باشد که State داخلی را تغییر دهد. این قضیه «محرک»ای می‌شود برای اینکه State را تغییر ندهیم.&lt;/li&gt;
+&lt;li&gt;وقتی یک متد public می‌نویسیم، می‌دانیم که باید آن را تست کنیم. و این خودش «محرک» ایست برای اینکه متدها را قابل تست شدن طراحی کنیم.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;آبجکت، از دو بخش اساسی تشکیل شده است: State و رفتار! State قرار نیست جایی نمایان باشد، ولی رفتار آبجکت قرار است برای دیگران نمایان و در دسترس باشد. اگر رفتار آبجکت برای بقیه در دسترس نباشد، یعنی آبجکت دارای رفتارهای پنهان است! یعنی آبجکت به غیر از ویژگی‌هایی که بقیه از اون انتظار دارند، دارای وظایف جانبی و مخفی می‌باشد؛ و یکی از اصول سودمند آبجکت‌ها «تک وظیفه» ای بودن آن‌هاست!&lt;/p&gt;
+
+&lt;p&gt;هر چه آبجکت‌ها را «تک وظیفه‌» ای تر کنید، متوجه می‌شوید که دیگر آنقدر متدی در آن وجود نخواهد داشت که بخواهید برای private یا public بودن آن‌ها سردرگم شوید!&lt;/p&gt;
+
+&lt;p&gt;پس این پیشنهاد برای ترغیب شما به:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ساخت متدهایی که State را تغییر نمی دهند.&lt;/li&gt;
+&lt;li&gt;ساخت متدهایی که مناسب تست شدن طراحی شده‌اند.&lt;/li&gt;
+&lt;li&gt;ساخت آبجکت‌هایی که «تک وظیفه» ای هستند و کلا متدهای زیادی ندارند.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;وگرنه اگر قرار باشد همینطور بیخود متدها را public کنید، به هیچ دردی نخواهد.&lt;/p&gt;
+
+&lt;p&gt;اگر متد شما public بود، و با اینحال باز هم State داخلی آبجکت را برای دیگر آبجکت‌ها نمایان نمی‌کرد، آن وقت است که شما یه کد خوب نوشته‌اید! برای همین است که می‌گوییم Data hiding باید از طریق معماری کدهای‌تان به وقوع بپیوندد، و نه از طریق چیزهایی مثل public و private (هرچند که این‌ها می توانند شما را در این امر یاری کنند).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;متدهای private به هیچ دردی نمی‌خورند؟&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;چرا. پیشنهاد من بر این اساس بود که اگر متد شما قصد تغییر State را داشت، و شما به این دلیل آن را private کرده اید، بهتر است بجای private کردن آن سعی کنید راهی پیدا کنید تا دیگر نیازی به تغییر State نباشد! به نوعی صورت مساله را عوض کنید!&lt;/p&gt;
+
+&lt;p&gt;اما متدهای private  برای مخفی کردن «پیاده سازی» همچنان سودمند هستند. فرض کنید متدی دارید که اصلا State را تغییر نمی دهد. اما شما مطمئن نیستید که پیاده سازی آن تا ابد به همین شکل باقی بماند. آن کد جزو چیزهایی است که فکر می‌کنید احتمالا در آینده به دلایل مختلف مثل تغییر الگوریتم یا پیدا کردن روشی برای سرعت بالاتر، تغییر خواهد کرد. چنین متدی را می‌توانید به طور private تعریف کنید.&lt;/p&gt;
+
+&lt;p&gt;دقت کنید که private کردن با هدف تغییر Stete ، و private کردن با هدف منعطف بودن پیاده سازی، دو چیز متفاوت هستند.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;اگر متدها را به شکل public تعریف کنیم، آیا ممکن نیست بقیه آبجکت‌ها با توجه به اینکه به آن متدها دسترسی دارند به آنها وابسته شوند؟ مگر قرار نبود وابستگی بین آبجکت‌ها را کم کنیم؟&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;برای جواب این سوال، بخش بعدی را مطالعه فرمایید&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;interface&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;اینترفیس-اینترفیس-اینترفیس&#34;&gt;اینترفیس، اینترفیس، اینترفیس&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;طراحی، باید از پیاده‌سازی جدا باشد!&lt;/li&gt;
+&lt;li&gt;اینترفیس، بیانگر طراحی آبجکت‌ها است. اینترفیس تعیین می‌کند که یک آبجکت قرار است چه ویژگی‌هایی داشته باشد.&lt;/li&gt;
+&lt;li&gt;کلاس، شامل پیاده‌سازی آبجکت‌ها است. این کلاس است که کدهای واقعی یک آبجکت در آن قرار می‌گیرد.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;اگر طراحی را از پیاده سازی جدا کنیم، دست ما باز خواهد بود تا با خیال راحت‌تری پیاده سازی را تغییر دهیم! همانطور که می دانید طراحی به ندرت تغییر می‌کند، ولی پیاده‌سازی همیشه دستخوش تغییر خواهد شد.&lt;/p&gt;
+
+&lt;p&gt;فرضا طراحی مشخص می کند فلان آبجکت کارش این باشد که مقادیر را sort نماید. بقیه آبجکت‌ها هم هروقت بخواهند از این آبجکت استفاده کنند می توانند متد sort آن را فراخوانی کنند. غافل از اینکه پیاده سازی الگوریتم sort ممکن است در پشت صحنه مدام تغییر کند. ولی آن‌ها تا وقتی که به متد sort دسترسی داشته باشند، پیاده سازی پشت صحنه برایشان مهم نیست و هر چقدر هم که آن را تغییر دهیم مشکلی در کار بقیه آبجکت‌ها پیدا نخواهد شد.&lt;/p&gt;
+
+&lt;p&gt;بنابراین، ایده‌آل ترین حالت این است که در هیچ کجا به طور &lt;em&gt;مستقیم&lt;/em&gt; از کلاس ها استفاده نکنیم! در نظر اول این جمله کمی سنگین به نظر می‌رسد! یعنی چه که از کلاس ها استفاده نکنیم؟ پس از چی استفاده کنیم؟&lt;/p&gt;
+
+&lt;p&gt;جواب: اینترفیس ها!&lt;/p&gt;
+
+&lt;p&gt;شما به کمک اینترفیس ها، هم می توانید API آبجکت‌ها را مشخص کنید و هم از نظر تایپ سیستم روی آن ها نظارت داشته باشید. فرضا هنگام تعریف پارامترهای یک تابع یا تعریف مقدار خروجی آن، مستقیما از کلاس ها استفاده نکنید. به جایش، از اینترفیس ها کمک بگیرید.&lt;/p&gt;
+
+&lt;p&gt;با این کار  آن تابع می‌تواند پذیرای تمام کلاس هایی باشد که از آن اینترفیس تبعیت می کنند و دیگر وابسته به کلاس خاصی نخواهد شد؛ و بهتر است بگوییم، که دیگر وابسته به پیاده‌سازی خاصی از یک آبجکت خواهد بود.&lt;/p&gt;
+
+&lt;p&gt;حالا حتی اگر تمام متدهای آبجکت را به شکل public تعریف کنید، باز هم اشیای خارجی فقط به آن‌هایی دسترسی خواهند داشت که در اینترفیس مشخص شده؛ چون آن‌ها دیگر دسترسی مستقیم به کلاس ندارند!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;به این صورت این موضوع مهم می‌شود:  این آبجکت چیست، و &lt;strong&gt;چه&lt;/strong&gt; کارهایی میتواند بکند.&lt;/li&gt;
+&lt;li&gt;و این موضوع از اهمیت می‌افتد: این آبجکت چیست، و &lt;strong&gt;چگونه&lt;/strong&gt; کار میکند!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;هرچه آبجکت‌ها از نحوه‌ی پیاده‌سازی یکدیگر بی خبر تر باشند، بهتر است. چون در غیر این صورت ممکن است پیاده سازی خودشان را،  مبتنی بر طرز کار یک آبجکت دیگر بنا کنند. در این سناریو اگر آن آبجکت تصمیم بگیرد شیوه‌ی انجام کارهایش را عوض کند، به صورت سریالی تمام اشیایی که به آن وابسته شده بودند از کار خواهند افتاد و شما مجبور به ریفکتور کردن تمام آن‌ها خواهید شد.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;زبان مورد علاقه‌ی من دارای مکانیزم اینترفیس نیست؛ چه راه‌کاری پینشهاد می دهید؟&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;جواب: برخی زبان‌ها مانند پایتون دارای اینترفیس نمی‌باشند. موضوع این است که  این وسط اینترفیس‌ها برای ما مهم نیستند. مهم در واقع «ایده»ی جدا سازی طراحی از پیاده‌سازی است. مثلا یک راهش می‌تواند این باشد که شما چنین چیزی را با وراثت شبیه سازی کنید:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;یک کلاس پایه بسازید تا ویژگی‌های آبجکت را با آن تعیین کنید.&lt;/li&gt;
+&lt;li&gt;این ویژگی‌ها را با متدهای پابلیک مشخص کنید.&lt;/li&gt;
+&lt;li&gt;متدها را خالی رها کنید. یا اینکه فقط یک پیاده‌سازی پیشفرض ولی بسیار ساده و کوتاه در متدها لحاظ کنید.&lt;/li&gt;
+&lt;li&gt;هیچ فیلدی در این کلاس قرار ندهید.&lt;/li&gt;
+&lt;li&gt;کلاس‌های فرزند باید از این کلاس ارث ببرند و تمام متدهای پابلیک را override کنند.&lt;/li&gt;
+&lt;li&gt;حالا می توانید در نقاط مختلف از کلاس والد به عنوان یک اینترفیس استفاده کنید.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;آیا متدهای public به نوعی همان API خارجی یک آبجکت محسوب نمی‌شوند؟&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;جواب: بله، می‌توان اینطور تصور کرد. ولی این متدها بهرحال در خود کلاس قرار دارند و جزیی از پیاده سازی هستند. ممکن است برنامه نویس در آینده تصمیم بگیرد که یکی از آن‌ها را پاک کند. یا اسمش را تغییر دهد. چرا وقتی یک abstraction راحت مثل اینترفیس ها در دسترس داریم، از آن استفاده نکنیم تا ما را از این دردسرها خلاص کند؟&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ویژگی‌های کلاس من با یک اینترفیس قابل بیان نیست. ایرادی ندارد اگر از چندین اینترفیس استفاده کند؟&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;خیر هیچ ایرادی ندارد. به هر تعداد که دوست دارید می توانید از اینترفیس‌ها استفاده کنید. یک اینترفیس خوب، یک اینترفیس کوچک است! و بهتر است هر گروه از ویژگی‌ها در اینترفیس‌های جداگانه قرار گیرند. پس کاملا نرمال است که کلاس از چندین اینترفیس برای مشخص کردن ویژگی‌هایش استفاده کند.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;inheritance&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;از-inheritance-استفاده-نکنید&#34;&gt;از Inheritance استفاده نکنید&lt;/h3&gt;
+
+&lt;p&gt;این مورد فکر نمی‌کنم نیاز به &lt;a href=&#34;https://amirrezaghaderi.com/fa/blog/types/#bad-inheritance&#34;&gt;توضیح&lt;/a&gt; داشته باشه. در هر مطلبی که راجع به شی‌گرایی گفته شده این گزینه وجود دارد! تقریبا همه می‌دانند که باید تا جایی که میشود از Inheritance دوری کرد. Inheritance یکی از کارآمدترین مکانیزم هاست، ولی به همان اندازه خطرناک هست.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;پس چرا این همه کتابخونه از Inheritance استفاده میکنن؟&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;دقت به جمله بالا که گفتم Inheritance یکی از کارامدترین مکانیزم هاست کردید؟ قضیه این است که بیشتر این کتابخانه های معروف یا از قبل نوشته شده‌اند و الان راهی جز ادامه همان راه ندارند؛ و یا اینکه در طراحی خود بسیار با فکر و دقت عمل کرده‌اند. وقتی پای پروداکشن وسط بیاید، من و شما و خیلی‌های دیگر زیر فشار و استرس و دِدلاین، فرصت تفکر و طراحی چنین سیستم‌هایی را نداریم و فقط کدهای خودمان را خراب می‌کنیم.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;آیا میشود از Trait استفاده کرد؟&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;بله. اتفاقا Trait ها جزو مکانیزم‌های مورد علاقه‌ی من هستند! Trait در هر زبانی اسم متفاوتی دارد. فرضا در جاوا Trait با همان اینترفیس ها تعریف می‌شود. (از جاوا ۸ به بعد). مهم ایده ایست که Trait با خود به همراه دارد، و آن گردآوری نکات مثبت Inheritance و interface در یک مکانیزم واحد است.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;db-objects&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;حذف-متدهای-set-و-استفاده-از-دیتابیس&#34;&gt;حذف متدهای set، و استفاده از دیتابیس!&lt;/h3&gt;
+
+&lt;p&gt;وقتی برای یک آبجکت متدهای set تعریف می‌کنید، در واقع اجازه‌ی ویرایش State داخلی آبجکت را برای اشیای دیگر فراهم کرده اید. به محض اینکه از متدهای set استفاده کردید، آبجکت شما از حالت آبجکت خارج میگردد و به یک «دیتا استراکچر» تبدیل می‌شود!&lt;/p&gt;
+
+&lt;p&gt;اما در پروداکشن، واقعا نمی توان تمام آبجکت ها را به شکل immutable طراحی کرد. در هر حالت نیاز پیدا خواهید کرد تا موارد مختلف را تغییر دهید.&lt;/p&gt;
+
+&lt;p&gt;یکی از عناصر اصلی در بیشتر برنامه‌های سرور، دیتابیس می‌باشد. دیتابیس یک موجودیت متغیر است. فیلدها اضافه می‌شوند، پاک می‌شوند، ویرایش می‌شوند&amp;hellip; در طراحی شی‌گرا هم می توانید آبجکت‌هایی داشته باشید که منحصرا به عنوان یک «دیتابیس» موجود در رم از آن استفاده کنید! بیایید در این نوشته آن‌ها را با اسم «دیتابیس آبجکت» صدا کنیم :)&lt;/p&gt;
+
+&lt;p&gt;همانطور که دیتای مورد نیاز یک سرویس را در خود سرویس نگه داری نمی‌کنید و به جایش از یک پایگاه داده برای نگه داری داده ها بهره می‌گیرید، من پیشنهاد میکنم مواردی که نیاز به تغییر دارند را در قالب یک «دیتابیس آبجکت» جداگانه پیاده سازی کنید. و این «دیتابیس آبجکت» را به کمک DI به آبجکت اصلی خودتان تزریق کنید!&lt;/p&gt;
+
+&lt;p&gt;در آن «دیتابیس آبجکت»، فقط متدهای get و set را به عنوان متدهای public داشته باشید. به حالتی که مشخص باشد این آبجکت فقط و فقط به منظور ذخیره و بازیابی داده هاست. همچنین اکیدا به این موضوع توجه کنید که درست همانند یک دیتابیس واقعی، باید مساله کانکشن‌های همروند را در آن پیش بینی کنید! زبان‌های مختلف مکانیزم‌های گوناگونی را برای‌تان ارائه کرده‌اند تا خیال‌تان از دسترسی همروند به دیتا راحت شود. از آن مکانیزم‌ها استفاده کنید. (مثلا lock ها&amp;hellip;)&lt;/p&gt;
+
+&lt;p&gt;در این حالت در آبجکت اصلی شما هیچ متد get یا set ای وجود نخواهد داشت. در آبجکت اصلی شما هیچ چیزی تغییر نمی‌کند. تمام چیزهای قابل تغییر در یک محدوده‌ی مشخص جمع شده‌اند و بقیه آبجکت‌ها به آن‌ها دسترسی ندارند. همچنین هیچ مکانیزمی برای همروندی در آبجکت اصلی شما نیاز نیست چون این قضیه از طرف «دیتابیس آبجکت» ای که از آن در پشت صحنه استفاده می‌کنید پیش بینی شده است!&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;end&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;سخن-آخر&#34;&gt;سخن آخر&lt;/h2&gt;
+
+&lt;p&gt;اگر با دقت به حرف‌های من توجه کرده باشد، متوجه می‌شوید تمام کاری که من در طول این نوشته انجام دادم ترغیب هرچه بیشتر شما به مدلی از شی‌گرایی است که شباهت بسیار زیادی به برنامه نویسی فانکشنال دارد! من معتقد هستم شی‌گرایی ایده‌آل، یعنی همان برنامه نویسی فانکشنال!&lt;/p&gt;
+
+&lt;p&gt;باز هم تاکید می کنم که هیچ کدام از پیشنهادات بالا، جنبه‌ی علمی ندارند و فقط حاصل تجربه‌ی شخصی خودم هستند. ممکن است این پینشهادات از جانب شما کاملا غلط باشند. و این موضوع کاملا قابل درک است.&lt;/p&gt;
+
+&lt;p&gt;همچنین دقت کنید که قرار نیست در پروژه‌های تان تمام پیشنهادات بالا را پیاده کنید. فقط کافی است این ها را گوشه فکرتان نگه دارید و حداقل تلاشی برای‌شان انجام دهید. اگر هم امکانش نبود، لازم نیست از این پیشنهادات استفاده کنید.&lt;/p&gt;
+
+&lt;p&gt;در نهایت، توصیه من این است که برای شی گرایی بهتر، این جمله را مدام در مغز خود تکرار کنید:&lt;/p&gt;
+
+&lt;p&gt;«هر آبجکت مانند سروری است که در یک کامپیوتر مستقل میزبانی شود!»&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>کالبد شکافی GraalVM</title>
@@ -2765,145 +3175,6 @@ start_match&amp;lt;Sporter&amp;gt;( s );
 &lt;p&gt;آیا من که گلکسی اس ۸ را مثال میزنم تا به حال آن را در دستم گرفته ام و با آن کار کرده ام که درباره آن ابزار نظر میکنم؟&lt;/p&gt;
 
 &lt;p&gt;خیر. اما کار نکرده میدانم که باز هم بهینگی آیفون را نخواهد داشت. و اس ۹ هم همینطور. و اس ۱۰ هم همینطور. و گوشی هایی که بعد از آن خواهند آمد! مگر اینکه در دنیای اندروید اتفاق خاصی رخ دهد&amp;hellip; اما تا رسیدن آن روز، حداقل شما میدانید که تفاوت سرعت آیفون و اندروید به چه دلایلی است.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>حقیقتی در باب محبوبیت زبان های برنامه نویسی</title>
-      <link>https://amirrezaghaderi.com/fa/blog/tier1-langs/</link>
-      <pubDate>March 30, 2017</pubDate>
-      <author>Amirreza Ghaderi</author>
-      <guid>https://amirrezaghaderi.com/fa/blog/tier1-langs/</guid>
-      <description>
-
-&lt;p&gt;زبان های برنامه نویسی امکان ارتباط بین انسان و ماشین را فراهم کرده اند؛ و هم چون زبان های انسانی، گوناگونی زیادی در بین آن ها وجود دارد. بعضی از آن ها محبوب ترند، و بعضی ناشناخته تر؛ محبوبیت زبان های انسانی مانند انگلیسی یا چینی عموما وابسته به جمعیت، و نفوذ سیاسی و اقتصادی و فرهنگی است.&lt;/p&gt;
-
-&lt;p&gt;اما چه عواملی باعث محبوبیت یک زبان برنامه نویسی می شود؟ کیفیت زبان؟ سرعت زبان؟ سادگی زبان؟&amp;hellip; راستش را بخواهید نتیجه ای که شخصا به آن رسیده ام این است:&lt;/p&gt;
-
-&lt;p&gt;&lt;span class=&#34;in-red&#34;&gt;
-&lt;strong&gt;واقعیت این است که فقط زبان هایی به شهرت فراگیر می رسند که یک «پلتفرم» به خصوص برای شان فراهم باشد.&lt;/strong&gt;
-&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;منظورم از «پلتفرم» چیست؟ یعنی زبان دارای این خصوصیات باشد:&lt;/p&gt;
-
-&lt;p&gt;&lt;span class=&#34;in-red&#34;&gt;
-الف) یک شرکت معتبر، سرمایه دار، و بزرگ با تمام قدرت از آن زبان حمایت کند.
-&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;span class=&#34;in-red&#34;&gt;
-ب) در یک زمینه‌ی خاص، آلترناتیو قدرت مند دیگری در مقابل آن زبان وجود نداشته باشد.
-&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;span class=&#34;in-red&#34;&gt;
-ج) در گذر سال های متمادی، «اثر شبکه» برای آن زبان شکل گرفته باشد.
-&lt;/span&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;اثر-شبکه-ای-چیست&#34;&gt;اثر شبکه ای چیست؟&lt;/h3&gt;
-
-&lt;p&gt;تاثیر «تعداد» استفاده کنندگان یک محصول، در ارزش آن.&lt;/p&gt;
-
-&lt;p&gt;برای مثال، اپلیکیشن های زیادی مثل اینستاگرام یا تلگرام وجود دارند؛ اما شما از آن‌ها استفاده نمیکنید چون همه‌ی دوستان تان روی اینستاگرام و تلگرام هستند. به عبارت دیگر، ارزش برنامه هایی مانند تلگرام و اینستاگرام به کاربرانی است که در آن ها حضور دارند؛&lt;/p&gt;
-
-&lt;p&gt;زبان هایی که دارای پلتفرم قدرتمند باشند:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;مناسب ترین انتخاب برای یادگیری و وقت گذاشتن هستند.&lt;/li&gt;
-&lt;li&gt;برای کاربرد در پروژه های واقعی مناسب اند.&lt;/li&gt;
-&lt;li&gt;ابزارها و مستندات پایداری دارند.&lt;/li&gt;
-&lt;li&gt;محبوبیت شان به این راحتی ها کم نمی شود از بین نمی روند.&lt;/li&gt;
-&lt;li&gt;تعداد بالای کاربران شان باعث میگردد که مدام در حال بهتر شدن باشند.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;اما چه زبان هایی دارای پلتفرم مناسب هستند؟&lt;/p&gt;
-
-&lt;h2 id=&#34;java&#34;&gt;Java&lt;/h2&gt;
-
-&lt;p&gt;شامل هر سه گزینه‌ی الف، ب، ج&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;اینترپرایز یا همان برنامه های سازمانی:&lt;/strong&gt;
-این گروه از برنامه‌ها به شکل موثر روی جاوا به عنوان یک زبان پایدار و مولتی پلتفرم حساب باز کرده اند. بخش مهمی از آن هم به دلیل حمایت «اوراکل» از آن است.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;اندروید:&lt;/strong&gt;
-مهم نیست که نیتیو اسکریپت، یا ری‌اکت نیتیو، و ابزارهایی از این دست چقدر پیشرفت کنند، درنهایت تنها جاوا به عنوان زبان اصلی اندروید شناخته میشود و برای ساخت برنامه های اندروید هیچ زبان دیگری توان رقابت با آن را ندارد.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;اکوسیستم JVM:&lt;/strong&gt;
-زبان های دیگری مانند اسکالا یا کلوژور که روی JVM اجرا میشوند، خودشان به نوعی از دلایل محبوبیت بیشتر جاوا و تثبیت کننده‌ی آینده‌ی آن شده اند!&lt;/p&gt;
-
-&lt;h2 id=&#34;c-و-c&#34;&gt;C و ++C&lt;/h2&gt;
-
-&lt;p&gt;گزینه‌های «ب» و «ج» تاثیر گذارترین هستن.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;برنامه‌های سیستمی:&lt;/strong&gt;
-سیستم عامل ها، کامپایلرها، تکست ادیتورها، ابزارهای سنگین رابط کاربر مثل آی‌دی‌ای ها یا مثلا فتوشاپ، پردازش تصویر، درایورها، سخت افزارهای توکار&amp;hellip; این‌ها بخشی از مواردی هستند که هیچ آلترناتیو دیگری به جز سی و سی‌پلاس‌پلاس برایشان وجود ندارد.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;بازی:&lt;/strong&gt;
-سی و مخصوصا سی‌پلاس‌پلاس در زمینه‌ی ساخت بازی های کامپیوتری یک استاندارد به حساب می‌آیند.&lt;/p&gt;
-
-&lt;p&gt;همه‌ی این‌ها باعث میشوند این دو زبان از نظر محبوبیت و ضریب کاربرد همیشه در یک حالت ثبات باقی بمانند.&lt;/p&gt;
-
-&lt;h2 id=&#34;sql&#34;&gt;SQL&lt;/h2&gt;
-
-&lt;p&gt;گزینه‌ی «ب»: زبان استاندارد و پذیرفته در سیستم های پایگاه داده. این زبان با انحصار به محبوبیت رسیده است.&lt;/p&gt;
-
-&lt;h2 id=&#34;javascript&#34;&gt;JavaScript&lt;/h2&gt;
-
-&lt;p&gt;گزینه‌ی «ب»: تنها زبان استاندارد و پذیرفته شده در کلاینت (مرورگر). به جرات می توان گفت اگر این انحصار وجود نداشت، جاوا اسکریپت عمرش به چند سال هم نمیکشید!&lt;/p&gt;
-
-&lt;p&gt;گزینه‌ی «الف»: به تناسب گزینه‌ی «ب»، رقابت تنگاتنگی بین مایکروسافت، اپل، گوگل، و موزیلا در جریان است تا بهترین موتور پردازش جاوااسکریپت را ارائه کنند. این رقابت برای جاوا اسکریپت سودمند بوده.&lt;/p&gt;
-
-&lt;p&gt;گزنه‌ی «ج»: به تناسب گزینه‌ی «ب»، جاوا اسکریپت زبانی است که امروزه تمام برنامه نویسان چه بخواهند و چه نخواهد باید آن را یاد بگیرند! به همین دلیل از محبوبیت بالایی برخوردار است.&lt;/p&gt;
-
-&lt;h2 id=&#34;c&#34;&gt;#C&lt;/h2&gt;
-
-&lt;p&gt;مهم ترین عامل گزینه‌ی «الف» است، هرچند که گزینه‌های «ب» و «ج» هم کم تاثیر نیستند.&lt;/p&gt;
-
-&lt;p&gt;سی شارپ و دات نت به استاندارد توسعه‌ی نرم افزار در سکوی مایکروسافت تبدیل شده اند. اپلیکشن ویندوز، ویندوز سرور، ویندوز موبایل، ایکس باکس، &amp;hellip;. روی سکوهای مایکروسافتی، سی شارپ بهترین گزینه است.&lt;/p&gt;
-
-&lt;h2 id=&#34;swift&#34;&gt;Swift&lt;/h2&gt;
-
-&lt;p&gt;مهم ترین عامل گزینه‌های «الف» و «ب» است. ابراز نظر درباره گزینه‌ی «ج» هنوز برای این زبان زود است.&lt;/p&gt;
-
-&lt;p&gt;سوییفت زبان «اپل» است. فکر میکنم همین جمله برای این زبان کافی باشد! وقتی پای اپلیکیشن‌های مک، آیفون، آیپد، و &amp;hellip; به وسط می آید، تنها گزینه (به جز آبجکتیو-سی) زبان سوییفت است. به خاطر قدرت و نفوذ اپل در جامعه‌ی نرم افزاری، این زبان چه بخواهیم و نخواهیم موفق خواهد بود.&lt;/p&gt;
-
-&lt;h2 id=&#34;php&#34;&gt;PHP&lt;/h2&gt;
-
-&lt;p&gt;بیشتر گزینه‌ی «ج» و تا حدی گزینه‌ی «ب»&lt;/p&gt;
-
-&lt;p&gt;هیچ آلترناتیو قدرت مند دیگری نیست که روی هاست های اشتراکی ساپورت شود. هاست هایی که با قیمت به شدت ارزان شان، سهم بزرگی از سرویس دهی به مشتریان کوچک را به عهده دارند. پی اچ پی در گذر زمان برنامه نویسان زیادی را جذب کرده و هیچ زبان دیگری نیست که بتوان سایت های کوچک را به راحتی پی اچ پی در آن پیاده سازی کرد.&lt;/p&gt;
-
-&lt;p&gt;از طرفی سیستم هایی مانند وردپرس و دروپال و جوملا و &amp;hellip; در زمینه‌ی سایت های محتوا محور (که بخش بزرگی از اینترنت را تشکیل میدهند) به عنوان سیستم های پذیرفته شناخته میشوند. زبان های دیگر هم زیاد میلی ندارند که سیستم هایی شبیه این ها را بسازند چون میدانند که به این راحتی به محبوبیت این سیستم ها لطمه وارد نمیشود.&lt;/p&gt;
-
-&lt;h2 id=&#34;python-ruby&#34;&gt;Python, Ruby&lt;/h2&gt;
-
-&lt;p&gt;بیشتر از همه گزینه‌ی «ج»&lt;/p&gt;
-
-&lt;p&gt;سال ها پیش، در یک دورانی، در برنامه نویسی یک خلا به وجود آمده بود: نبود زبان هایی همه منظوره و آسان که از کیفیت مناسبی هم برخوردار باشند؛ پایتون و روبی توانستند آن خلا را پر کنند و خوش بدرخشند و تعداد زیادی از برنامه نویسان را به خود جذب نمایند. از ابزارهای متعدد ترمینال و دسکتاپ گرفته تا وب اپلیکشن هایی با مقیاس متوسط و نیمه بزرگ، این دو زبان هایی هستند که واقعا کار گشا می باشند.&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;اگر واقع بین باشم، این لیست در همین جا تمام می شود! بقیه زبان ها در عالم واقعیت فاصله‌ی زیادی با لیست بالا دارند (حتی اگر ردیت و هکرنیوز چیز دیگری به شما تلقین کنند.)&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://golang.org/&#34;&gt;گولنگ&lt;/a&gt;، در اول راه است و تازه گرم شده. شانسی که این زبان آورده این است که دوباره یک خلا در برنامه نویسی به وجود آمده: برای برنامه نویسان زبان های داینامیک (مثل پی اچ پی، پایتون، و روبی) مشخص شده که این زبان ها برای پروژه های بزرگ و سیستم هایی با همروندی بالا بهینه نیستند. گولنگ فعلا توانسته از این موقعیت شکل گرفته استفاده کند و در مدت کم محبوبیت مناسبی بدست آورد ولی هنوز برای اینکه آن را یک زبان رده اول عنوان کنیم خیلی زود است. حداقل باید پنج سال برای روشن تر شدن آینده‌ی این زبان منتظر ماند.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.rust-lang.org/en-US/&#34;&gt;راست&lt;/a&gt;، بسیار جوان است؛ همچنین بسیار سطح پایین‌تر از چیزی است که خیلی ها تصور میکنند! خیلی از برنامه نویسان که شاید درک عمیقی از مباحث حافظه نداشته باشند قادر نخواهند بود در آن احساس راحتی کنند. راست عملا یک سی‌پلاس‌پلاس مدرن است؛ به همان بزرگی و تقریبا به همان پیچیدگی! و سی‌پلاس‌پلاس هم زبانی نیست که به این راحتی کنار بکشد (مخصوصا با وجود چیزی که از آن به عنوان سی‌پلاس‌پلاس «مدرن» یاد میشود و شامل استانداردهای جدیدتر این زبان است). دوباره باید بگوییم، هنوز خیلی زود است که بخواهیم حساب جدی روی این زبان باز کنیم.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.erlang.org/&#34;&gt;ارلنگ&lt;/a&gt;، برنامه نویسان پس از سال ها تازه به یادش افتاده اند؛ ارلنگ در طراحی و ساخت سیستم های توزیع شده تقریبا بی رقیب است، ولی می توان گفت در زمینه‌های دیگر حرف زیادی برای گفتن ندارد.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://elixir-lang.org/&#34;&gt;الیکسیر&lt;/a&gt;، بیشتر در نقش یک آلترناتیو برای گولنگ ظاهر شده که ممکن است برای طرفداران زبان های داینامیک جذاب تر باشد. یعنی درصدی از طرفداران زبان های داینامیک که ممکن بود به گولنگ گرایش پیدا کنند، حالا یک گزینه‌ی ثانویه در اختیار دارند.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.scala-lang.org/&#34;&gt;اسکلا&lt;/a&gt; و &lt;a href=&#34;https://clojure.org/&#34;&gt;کلوژور&lt;/a&gt;، هیچ وقت از زیر سایه جاوا بیرون نخواهند آمد. جاوا هم این وسط بیکار نمانده و با هر نسخه‌ی جدیدی که منتشر میکند آرام آرام امکانات مدرن تری به خود اضافه می نماید. در حدی که شاید خیلی ها دیگر لازم ندانند که از آن کوچ کنند.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://fsharp.org/&#34;&gt;اف شارپ&lt;/a&gt;، مشابه اسکالا و کلوژور همیشه در سایه سی شارپ خواهد ماند. فوکوس اصلی مایکروسافت، سی شارپ است. بقیه زبان ها بیشتر برای راضی نگه داشتن سلیقه های مختلف ظاهر شده اند.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.haskell.org/&#34;&gt;هسکل&lt;/a&gt;، و دیگر زبان هایی که تمرکز  و تاکید زیادی به فانکشنال بودن دارند، به این راحتی به جایی نخواهند رسید. شیوه‌ی برنامه نویسی در زبان های «دستوری» به شیوه ی مکالمه ی انسان ها نزدیک تر است؛ در برابر زبان های فانکشنال که مکالمه در آن‌ها بیشتر شبیه فرمول های ریاضی است. مسلما به هیچ عنوان نمی توان منکر مزایای زبان های فانکشنال شد، اما از آنجایی که اکثر زبان های دستوری کم و بیش در حال اضافه کردن قابلیت های فانکشنال هستند، این سوال پیش می آید که آیا برایمان صرف میکند که کاملا به یک زبان فانکشنال کوچ کنیم یا اینکه در همین زبان آشنای دستوری بمانیم و کم کم کدهایمان را به شکل فانکشنال تری بنویسیم؟&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;br&gt;
-شاید اشتباه کنم، اما فکر میکنم اگر تمام کدهای نوشته شده در زبان های بخش دوم را با هم جمع کنیم، باز به اندازه‌ی حتی یکی از زبان های ذکر شده در بخش اول نمی رسند!
-&lt;br&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;همه‌ی موارد بالا به کنار، تجربه ثابت کرده که وقتی زبان یا ابزار جدیدی ظهور می کند، میانگین ده سال طول می کشد که به یک محصول شناخته شده و بدیهی در بین عموم برنامه نویسان تبدیل شود. شاید بعضی از زبان ها باشند که بیست سال یا بیشتر از انتشار آن‌ها گذشته باشد، ولی پروسه شناخته شدن آن ها به تازگی صورت پذیرفته باشد. همه‌ی این ها باعث میشوند که رسیدن به زبان هایی که در بخش اول این نوشته ذکر کردیم، برای زبان هایی که در بخش دوم لیست کردیم بسیار سخت و حتی غیر ممکن باشد.&lt;/p&gt;
-
-&lt;p&gt;برنامه نویسان همیشه مشتاق یادگیری زبان های جدید هستند. اگر بخواهیم تنها به یک زبان اکتفا کنیم و هیچ چیز دیگری را مطالعه نکنیم، مغزمان به یک مرداب تبدیل خواهد شد؛ اما مطالعه و تحقیق درباره‌ی زبان‌های مختلف، فرق زیادی دارد با استفاده‌ی واقعی و گسترده از آن‌ها&amp;hellip;&lt;/p&gt;
 </description>
     </item>
     
