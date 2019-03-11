@@ -6,10 +6,22 @@
     <description>Recent content in Blogs on امیررضا قادری</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fa-IR</language>
-    <lastBuildDate>Sun, 03 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://amirrezaghaderi.com/fa/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>تشریح مفاهیم Synchronous و Asynchronous به زبان ساده‌ی فارسی</title>
+      <link>https://amirrezaghaderi.com/fa/blog/sync-async/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://amirrezaghaderi.com/fa/blog/sync-async/</guid>
+      <description>فهرست مطالب  مقدمه منظور از کدهای Synchronous چیست منظور از کدهای Asynchronous چیست سخن آخر  
+مقدمه وقتی واژه‌ی Synchronous را در دیکشنری جستجو می‌کنید، چیزی که دستگیرتان می‌شود احتمالا این معنی است: هم‌زمان.
+و به تناسب، برای واژه‌ی Asynchronous هم با معنی «غیر هم‌زمان» مواجه خواهید شد.
+اگر در حال خواندن این نوشته هستید، احتمالا شما هم مثل من به این نتیجه رسیده‌اید که این معانی نمی توانند مفهوم این دو واژه را بدرستی منتقل نمایند.</description>
+    </item>
     
     <item>
       <title>آبجکت های شما، سرورهای شما</title>
