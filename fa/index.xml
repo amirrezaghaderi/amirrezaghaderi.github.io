@@ -1,91 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Amirreza's blog</title>
     <link>https://amirrezaghaderi.com/fa/</link>
     <language>en-US</language>
     <description>وبلاگ شخصی امیررضا قادری، توسعه دهنده‌ی نرم افزار و سرویس های مبتنی بر وب</description>
-    <updated>Mon, 11 Mar 2019 00:00:00 &#43;0000</updated>
+    <updated>Mon, 22 Jun 2020 00:00:00 &#43;0000</updated>
 
     
     <item>
-      <title>تشریح مفاهیم Synchronous و Asynchronous به زبان ساده‌ی فارسی</title>
-      <link>https://amirrezaghaderi.com/fa/blog/sync-async/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 &#43;0000</pubDate>
-      <guid>https://amirrezaghaderi.com/fa/blog/sync-async/</guid>
-      <description>اگر فکر میکردید با مفاهیم Synchronous یا Asynchronous آشنا هستید، ولی نمی توانستید به درستی آن را برای دیگران توضیح دهید...</description>
-    </item>
-    
-    <item>
-      <title>آبجکت های شما، سرورهای شما</title>
-      <link>https://amirrezaghaderi.com/fa/blog/objects-servers/</link>
-      <pubDate>Sun, 03 Mar 2019 00:00:00 &#43;0000</pubDate>
-      <guid>https://amirrezaghaderi.com/fa/blog/objects-servers/</guid>
-      <description>پیشنهاداتی در زمینه‌ی بهتر شدن کدهای شی گرا</description>
-    </item>
-    
-    <item>
-      <title>کالبد شکافی GraalVM</title>
-      <link>https://amirrezaghaderi.com/fa/blog/graalvm/</link>
-      <pubDate>Wed, 18 Apr 2018 00:00:00 &#43;0000</pubDate>
-      <guid>https://amirrezaghaderi.com/fa/blog/graalvm/</guid>
-      <description>کالبد شکافی VM جدیدی که اوراکل توسعه داده است</description>
-    </item>
-    
-    <item>
-      <title>تایپ هایی که به آن ایمان داریم!</title>
-      <link>https://amirrezaghaderi.com/fa/blog/in-types-we-trust/</link>
-      <pubDate>Mon, 05 Mar 2018 00:00:00 &#43;0000</pubDate>
-      <guid>https://amirrezaghaderi.com/fa/blog/in-types-we-trust/</guid>
-      <description>مزایای استفاده از زبان‌های استاتیک تایپ</description>
-    </item>
-    
-    <item>
-      <title>دیتا تایپ‌های جبری (‌‌ADT)</title>
-      <link>https://amirrezaghaderi.com/fa/blog/adt/</link>
-      <pubDate>Tue, 06 Feb 2018 00:00:00 &#43;0000</pubDate>
-      <guid>https://amirrezaghaderi.com/fa/blog/adt/</guid>
-      <description>تشریح مفهوم دیتا تایپ های جبری</description>
-    </item>
-    
-    <item>
-      <title>شرکت شما، خانواده‌ی شما نیست</title>
-      <link>https://amirrezaghaderi.com/fa/blog/not-family/</link>
-      <pubDate>Wed, 09 Aug 2017 00:00:00 &#43;0000</pubDate>
-      <guid>https://amirrezaghaderi.com/fa/blog/not-family/</guid>
-      <description>چرا مدیران به سختی در تلاش‌اند تا به کارمندان شرکت حس یک «خانواده» را القا کنند</description>
-    </item>
-    
-    <item>
-      <title>جامعه‌ی نرم‌افزارهای آزاد: از ما بهتران!</title>
-      <link>https://amirrezaghaderi.com/fa/blog/fsfiran/</link>
-      <pubDate>Sun, 23 Jul 2017 00:00:00 &#43;0000</pubDate>
-      <guid>https://amirrezaghaderi.com/fa/blog/fsfiran/</guid>
-      <description>دلخوری‌هایی درباره جامعه‌ی نرم افزارهای آزاد ایران</description>
-    </item>
-    
-    <item>
-      <title>نبود قابلیت‌های مختلف در گولنگ: جنریک</title>
-      <link>https://amirrezaghaderi.com/fa/blog/golang-generics/</link>
-      <pubDate>Wed, 12 Jul 2017 00:00:00 &#43;0000</pubDate>
-      <guid>https://amirrezaghaderi.com/fa/blog/golang-generics/</guid>
-      <description>نبود قابلیت‌های مختلف در گولنگ: جنریک و چگونگی پیاده‌سازی آن در گولنگ</description>
-    </item>
-    
-    <item>
-      <title>شیوه‌های مختلف پیاده سازی جنریک در زبان‌ها</title>
-      <link>https://amirrezaghaderi.com/fa/blog/generics/</link>
-      <pubDate>Tue, 11 Jul 2017 00:00:00 &#43;0000</pubDate>
-      <guid>https://amirrezaghaderi.com/fa/blog/generics/</guid>
-      <description>نگاهی به شیوه‌های مختلف پیاده سازی جنریک در زبان های برنامه نویسی</description>
-    </item>
-    
-    <item>
-      <title>مفاهیم بنیادین تایپ سیستم ها</title>
-      <link>https://amirrezaghaderi.com/fa/blog/types/</link>
-      <pubDate>Thu, 06 Jul 2017 00:00:00 &#43;0000</pubDate>
-      <guid>https://amirrezaghaderi.com/fa/blog/types/</guid>
-      <description>مرجع فارسی برای آشنایی با مفاهیم بنیادی تایپ سیستم ها</description>
+      <title>Blogs</title>
+      <link>https://amirrezaghaderi.com/fa/blog/</link>
+      <pubDate>Mon, 22 Jun 2020 00:00:00 &#43;0000</pubDate>
+      <guid>https://amirrezaghaderi.com/fa/blog/</guid>
+      <description></description>
     </item>
     
 

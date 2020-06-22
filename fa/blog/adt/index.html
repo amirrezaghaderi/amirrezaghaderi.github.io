@@ -106,222 +106,152 @@ if("querySelector"in document&&"addEventListener"in window&&"classList"in docume
 </div>
 
 <div class="entry-content p10">
-
-
 <p><a name="toc"></a></p>
-
 <h2 id="فهرست-مطالب">فهرست مطالب</h2>
-
 <ul>
 <li><a href="#intro">مقدمه</a></li>
 <li><a href="#type-is-set">هر تایپ، یک مجموعه است</a></li>
 <li><a href="#adt">دیتا تایپ جبری</a></li>
 <li><a href="#product-type">ضرب یا Product</a>
-
 <ul>
 <li><a href="#create-product-type">چگونه یک Product Type تعریف کنیم؟</a></li>
 <li><a href="#c-struct">struct در C</a></li>
-</ul></li>
+</ul>
+</li>
 <li><a href="#sum-type">جمع یا Sum</a>
-
 <ul>
 <li><a href="#create-sum-type">چگونه یک Sum Type تعریف کنیم؟</a></li>
 <li><a href="#c-union">Union ها در زبان C</a></li>
 <li><a href="#c-enum">Enum ها در زبان C</a></li>
 <li><a href="#c-tagged-union">Tagged Union در زبان C</a></li>
 <li><a href="#sum-types-in-modern-pl">تعریف Sum Type در زبان های مدرن</a></li>
-</ul></li>
+</ul>
+</li>
 <li><a href="#option-type">تایپ Option</a></li>
 <li><a href="#end">سخن آخر</a></li>
 </ul>
-
 <p><a name="intro"></a><a name="مقدمه"></a></p>
-
 <h2 id="مقدمه">مقدمه</h2>
-
 <p>مدتی پیش یک پست بُلندبالا نوشتم و تعدادی از مفاهیم مربوط به تایپ سیستم‌ها را در آن شرح دادم؛ اما یکی از مهم‌ترین مفاهیمی که باید در آن پست قرار می‌دادم را از قلم انداختم. دلیل اصلی‌اش هم این بود که فکر می‌کردم این مفهموم آنقدر مهم هست که باید یک پست مجزا را به آن اختصاص دهم.</p>
-
 <p>«دیتا تایپ‌های جبری» یا Algebraic Data Types (که با نام اختصاری ADT) شناخته می‌شوند، از مهم‌ترین و پایه‌ای ترین مفاهیم تایپ سیستم‌ها هستند که متاسفانه خیلی از برنامه‌نویسان آشنایی مناسبی با آن‌ها ندارند؛ این قضیه هم مختص برنامه‌نویسان ایرانی نیست. نکته‌ی عجیب ماجرا اینجاست که تقریبا تمام برنامه‌نویسان کم و بیش با این تایپ‌ها سر و کار داشته اند.</p>
-
 <p>دیتا تایپ‌های جبری با زبان ML معروف شدند؛ و هر زبانی که به نوعی ایده‌هایی از ML را در خود دارد نیز کم و بیش دارای دیتا تایپ‌های جبری می‌باشد. زبان‌هایی مانند Haskell ، Scala، Rust، Swift، Clojure، Erlang/Elixir، Ocaml، TypeScript و&hellip; برای همین تصمیم گرفتم مطابق مطالب پیشین این وبلاگ، در این پست به زبانی ساده مفهموم دیتا تایپ‌های جبری را شرح دهم.</p>
-
 <p><a name="type-is-set"></a><a name="هر تایپ، یک مجموعه است"></a></p>
-
 <h2 id="هر-تایپ-یک-مجموعه-است">هر تایپ، یک مجموعه است</h2>
-
 <p>در مقاله‌ی مربوط به «مفاهیم بنیادین تایپ سیستم‌ها»، مفهوم «تایپ» را به این صورت تعریف کردیم:</p>
-
 <p>«خصوصیتی است که تعیین می‌کند یک «داده»، می‌تواند شامل چه «محتوا» ای باشد و چه کارهایی می‌توان با آن انجام داد».</p>
-
 <p>فرضا وقتی می‌گوییم متغیر A از تایپ int است منظورمان چیست؟ یعنی متغیر A می‌تواند شامل «یکی» از حالاتی باشد که از طرف تایپ int قابل ارائه است.</p>
-
 <p><strong>سوال: تایپ int چه حالاتی را ارائه میکند؟</strong></p>
-
 <p>با فرض بر اینکه int را از نوع ۳۲بیتی در نظر گرفته باشیم، مقادیر قابل ارائه در تایپ int یکی از اعدادی خواهد بود که بین منفی 2147483648 تا مثبت 2147483647 هستند. میتوان اینطور گفت که int در واقع بیان کننده‌ی «مجموعه» مقادیری است که بین این دو عدد قرار دارد. اگر بخواهیم به زبان ریاضی توضیح دهیم یعنی این:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Text" data-lang="Text">int = {-2147483648, -2147483647, -2147483646, . . . , 2147483647}</code></pre></div>
-<p>چنین تعریفی برای بقیه تایپ‌ها نیز صدق می‌کند. مثلا تایپ string شامل «مجموعه»ای است که از تمام کاراکترهای یونیکد تشکیل شده است. یا مثلا تایپ bool یا boolean شامل «مجموعه» ای دو عضوی است: true یا false</p>
-
-<p><span class="in-red">
+<div class="highlight"><pre class="chroma"><code class="language-Text" data-lang="Text">int = {-2147483648, -2147483647, -2147483646, . . . , 2147483647}
+</code></pre></div><p>چنین تعریفی برای بقیه تایپ‌ها نیز صدق می‌کند. مثلا تایپ string شامل «مجموعه»ای است که از تمام کاراکترهای یونیکد تشکیل شده است. یا مثلا تایپ bool یا boolean شامل «مجموعه» ای دو عضوی است: true یا false</p>
+<span class="in-red">
 پس هر تایپ، در قالب یک «مجموعه» قابل تعریف است. (Set)
-</span></p>
-
+</span>
 <p><a name="adt"></a><a name="دیتا تایپ جبری"></a></p>
-
 <h2 id="دیتا-تایپ-جبری">دیتا تایپ جبری</h2>
-
 <p>از آنجایی که هر تایپ یک مجموعه است، پس قادر هستیم عملیات جبری مربوط به مجموعه‌ها مثل «اشتراک» و «اجتماع» و &hellip; را روی آن‌ها اعمال کنیم! بنابراین دیتا تایپ‌های جبری را می‌توان اینچنین تعریف کرد:</p>
-
-<p><span class="in-red">
+<span class="in-red">
 «تایپ‌هایی که می‌توانیم عملیات‌های جبری مربوط به مجموعه‌ها را روی آن‌ها اعمال کنیم. در این تعریف، منظورمان از عملیات جبری مشخصا عمل «ضرب» و «جمع» می‌باشد.»
-</span></p>
-
+</span>
 <p>در تعریف بالا:</p>
-
 <ul>
 <li>منظورمان از «ضرب»، همان «ضرب دکارتی» است که به انگلیسی با عنوان Product یا Cartesian product شناخته می‌شود.</li>
 <li>و منظورمان از «جمع»، همان «اجتماع» یا Union است.</li>
 </ul>
-
 <p>من خودم با اینکه ارزش بسیار زیادی برای ریاضیات قائل هستم، اما هیچوقت در آن خوب نبودم! بنابراین مطمئن باشید که این تعاریف را به ساده‌ترین حالت ممکن توضیح خواهم داد.</p>
-
 <p><a name="product-type"></a><a name="ضرب یا Product"></a></p>
-
 <h2 id="ضرب-یا-product">ضرب یا Product</h2>
-
 <p>همانطور که گفتیم در این مقاله منظورمان از «ضرب»، همان ضرب دکارتی است.</p>
-
 <p>تعریف ضرب دکارتی:</p>
-
 <p>اگر دو مجموعه داشته باشیم به نام‌های A و B ، حاصلضرب دکارتی این دو مجموعه را با نماد  A × B نشان خواهیم داد؛ و نتیجه‌ی آن برابر است با مجموعه‌ای که عضوهایش شامل تمام ترکیباتی باشد که عنصر اول آن از اعضای A انتخاب شده باشد و عنصر دیگر آن از اعضای B باشد.</p>
-
 <p>مثال:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Text" data-lang="Text">A = { x, y }
 
 B = { 3, 4, 5 }
 
 A × B = { (x , 3), (x , 4), (x , 5),
-          (y , 3), (y , 4), (y , 5) }</code></pre></div>
-<p>دقت کنید اعضای مجموعه‌ی نهایی که از حاصلضرب دکارتی دو مجموعه‌ی اول بدست آمده‌اند، هر کدام در قالب یک «ترکیب» در مجموعه حاضر شده‌اند. مثلا مانند (x , 3).</p>
-
+          (y , 3), (y , 4), (y , 5) }
+</code></pre></div><p>دقت کنید اعضای مجموعه‌ی نهایی که از حاصلضرب دکارتی دو مجموعه‌ی اول بدست آمده‌اند، هر کدام در قالب یک «ترکیب» در مجموعه حاضر شده‌اند. مثلا مانند (x , 3).</p>
 <p>اگر همین تعاریف را بخواهیم در برنامه‌نویسی وارد کنیم، میگوییم که:</p>
-
-<p><span class="in-red">
+<span class="in-red">
 اگر یک «پروداکت تایپ» داشته باشیم، مقدار مورد قبول آن می‌تواند شامل عناصر ترکیبی ای باشد که در مجموعه حالات آن تایپ تعریف شده است.
-</span></p>
-
+</span>
 <p><a name="create-product-type"></a><a name="چگونه یک Product Type تعریف کنیم؟"></a>
 <strong>چگونه یک Product Type تعریف کنیم؟</strong></p>
-
 <p>پروداکت تایپ ها در اکثر زبان‌های برنامه نویسی حضور دارند و همه‌ی شما با آن‌ها کار کرده اید! برای تعریف یک پروداکت تایپ جدید، می توانید از ساختار‌های ترکیبی مانند struct یا class یا tuple استفاده کنید. مثلا میخواهیم یک تایپ تعریف کنیم که وضعیت حضور و غیاب و شماره صندلی دانش آموزان را با آن بیان نماییم. میتوانیم این تایپ را به شکل یک پرداکت تایپ تعریف کنیم. کد آن در زبان C چیزی شبیه این خواهد بود:</p>
 <div class="highlight"><pre class="chroma"><code class="language-C" data-lang="C"><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
    <span class="kt">bool</span>   <span class="n">present</span><span class="p">;</span>
    <span class="kt">int</span>    <span class="n">seatNumber</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">ClassRoomStudent</span><span class="p">;</span></code></pre></div>
-<p>(حواس‌تان باشد که تایپ bool در ویرایش C99 به زبان C اضافه شده است)</p>
-
+<span class="p">}</span> <span class="n">ClassRoomStudent</span><span class="p">;</span>
+</code></pre></div><p>(حواس‌تان باشد که تایپ bool در ویرایش C99 به زبان C اضافه شده است)</p>
 <p>و در قسمت‌های دیگر کدهای خود می‌توانیم به چنین شکلی از این تایپ استفاده کنیم:</p>
 <div class="highlight"><pre class="chroma"><code class="language-C" data-lang="C"><span class="n">ClassRoomStudent</span> <span class="n">sara</span>  <span class="o">=</span> <span class="p">{</span><span class="nb">true</span>  <span class="p">,</span> <span class="mi">12</span><span class="p">};</span>
 <span class="n">ClassRoomStudent</span> <span class="n">john</span>  <span class="o">=</span> <span class="p">{</span><span class="nb">true</span>  <span class="p">,</span>  <span class="mi">5</span><span class="p">};</span>
 <span class="n">ClassRoomStudent</span> <span class="n">steve</span> <span class="o">=</span> <span class="p">{</span><span class="nb">false</span> <span class="p">,</span> <span class="mi">18</span><span class="p">};</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">sara</span><span class="p">.</span><span class="n">present</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;Sara is here and her seat number is: %d&#34;</span><span class="p">,</span> <span class="n">sara</span><span class="p">.</span><span class="n">seatNumber</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div>
-<p><a name="c-struct"></a><a name="struct در C"></a></p>
-
-<h2 id="struct-در-c">struct در C</h2>
-
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sara is here and her seat number is: %d&#34;</span><span class="p">,</span> <span class="n">sara</span><span class="p">.</span><span class="n">seatNumber</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="struct-در-c"><a name="c-struct"></a><a name="struct در C"></a>
+struct در C</h2>
 <p>یک struct در زبان C می‌تواند چندین تایپ گوناگون را در قالب یک تایپ جدید در کنار هم گردآوری کند. برای هر کدام از تایپ هایی که در struct لیست شده‌اند نیز اسمی در نظر گرفته می‌شود تا توسط آن‌ها بتوان تایپ ها را مقدار دهی کرد. (مثل present یا seatNumber در مثال بالا).</p>
-
 <p>سایز یک struct در حافظه، برابر است با مجموع سایز تمام تایپ هایی که در آن لیست شده اند. فرضا در مثال بالا یک تایپ bool و یک تایپ int را در struct لیست کرده ایم پس سایز این struct برابر است با : 1+4 = 5 بایت. (فرض کرده ایم که هر int را معادل ۴ بایت است. همچنین ۳ بایت هم برای padding اضافه خواهد شد)</p>
-
 <p>دقت کنید که وقتی خواستیم یک نمونه از روی struct خود ایجاد کنیم، چگونه متغیرهای sara یا john  را به صورت ترکیبی مقدار دهی کردیم&hellip; این ترکیب برابر است با همان ترکیبی که در تایپ ClassRoomStudent مشخص کرده بودیم.</p>
-
 <p><strong>سوال: مجموعه مقادیری که پروداکت تایپ ClassRoomStudent میتواند ارائه کند چیست؟</strong></p>
-
 <ul>
 <li>عنصر اول از تایپ ClassRoomStudent برابر با bool است و bool شامل دو عضو true یا false می‌باشد.</li>
 <li>عنصر دوم از تایپ ClassRoomStudent برابر با int است و int شامل 4294967296 رقم مختلف است که بین اعداد منفی 2147483648 تا مثبت 2147483647 قرار دارند.</li>
 </ul>
-
 <p>بنابراین مجموعه حالات ClassRoomStudent برابر مجموعه‌ی زیر است:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Text" data-lang="Text">ClassRoomStudent = { (true , -2147483648), (true , -2147483647), . . ., (false , 2147483647) }</code></pre></div>
-<p>اگر تا الآن برایتان سوال بود که کامپایلر چگونه مقادیر مربوط به تایپ‌های شما را از نظر درستی چک میکند، حالا دیگر جواب آن را می‌دانید. کامپایلر مقداری که عنوان کرده اید را بررسی میکند و جویای این می‌شود که آیا مقدار شما جزو مجموعه‌ی مقادیر تایپ مورد نظرتان هست یا خیر. در حقیقت اعمال ریاضی مربوط به تئوری مجموعه‌ها در حال انجام کارتان هستند!</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-Text" data-lang="Text">ClassRoomStudent = { (true , -2147483648), (true , -2147483647), . . ., (false , 2147483647) }
+</code></pre></div><p>اگر تا الآن برایتان سوال بود که کامپایلر چگونه مقادیر مربوط به تایپ‌های شما را از نظر درستی چک میکند، حالا دیگر جواب آن را می‌دانید. کامپایلر مقداری که عنوان کرده اید را بررسی میکند و جویای این می‌شود که آیا مقدار شما جزو مجموعه‌ی مقادیر تایپ مورد نظرتان هست یا خیر. در حقیقت اعمال ریاضی مربوط به تئوری مجموعه‌ها در حال انجام کارتان هستند!</p>
 <p>همانطور که دیدید بدون اینکه تا قبل از این با مفهوم پروداکت تایپ ها آشنا باشید، به صورت روزمره از آن ها استفاده می‌کردید. پس تا اینجای کار مشکلی نیست&hellip; اژدها در بخش بعدی وارد خواهد شد!</p>
-
 <p><a name="sum-type"></a><a name="جمع یا Sum"></a></p>
-
 <h2 id="جمع-یا-sum">جمع یا Sum</h2>
-
 <p>بالاتر اشاره کردیم که منظورمان  از «جمع»، همان «اجتماع» یا Union است. (در برنامه‌نویسی با گونه‌ای از Union ها به اسم Tagged union بیشتر طرف خواهید شد.)</p>
-
 <p>تعریف اجتماع:</p>
-
 <p>اگر دو مجموعه داشته باشیم به نام‌های A و B ، اجتماع این دو مجموعه را با نماد  A ∪ B  نشان خواهیم داد؛ و نتیجه‌ی آن برابر است با مجموعه‌ای که اعضایش «یا» در A هستند، «یا» در B هستند، و «یا» در هردوی آن‌ها. (حواس‌تان باشد که روی «یا» حساسیت به خرج داده ام!)</p>
-
 <p>مثال:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Text" data-lang="Text">A = { x, y }
 
 B = { 3, 4, 5 }
 
-A ∪ B = { x, y, 3, 4, 5 }</code></pre></div>
-<p>بر خلاف پرداکت، اینجا میبینید که اعضای مجموعه‌ی نهایی به صورت فردی و تنها ظاهر شده‌اند.</p>
-
+A ∪ B = { x, y, 3, 4, 5 }
+</code></pre></div><p>بر خلاف پرداکت، اینجا میبینید که اعضای مجموعه‌ی نهایی به صورت فردی و تنها ظاهر شده‌اند.</p>
 <p>اگر همین تعاریف را بخواهیم در برنامه‌نویسی وارد کنیم، میگوییم که:</p>
-
-<p><span class="in-red">
-اگر یک «سام تایپ» داشته باشیم، مقدار مورد قبول آن می‌تواند «یکی»، و <strong>فقط «یکی»</strong>، از عناصری باشد که در مجموعه حالات آن تایپ تعریف شده است.
-</span></p>
-
+<span class="in-red">
+اگر یک «سام تایپ» داشته باشیم، مقدار مورد قبول آن می‌تواند «یکی»، و **فقط «یکی»**، از عناصری باشد که در مجموعه حالات آن تایپ تعریف شده است.
+</span>
 <p><a name="چگونه یک Sum Type تعریف کنیم؟"></a><a name="create-sum-type"></a>
 <strong>چگونه یک Sum Type تعریف کنیم؟</strong></p>
-
 <p>برعکس پروداکت تایپ ها که در اکثر زبان های برنامه نویسی براحتی تعریف می‌شوند، متاسفانه سام تایپ ها در هر زبانی وجود ندارند! در زمان نگارش این مقاله، بیشتر زبان‌های رده اول دنیا پشتیبانی مناسبی از سام تایپ ها ارائه نمی‌کنند. زبان‌های داینامیک مانند Python، PHP، Ruby یا JS که کلا استاتیک تایپ نیستند؛ زبان‌هایی مانند C، ++C، Java و #C نیز پشتیبانی مناسبی از سام تایپ ها ندارد.</p>
-
 <p>اما زبان‌های مدرن تر مثل Scala، Rust، Swift، TypeScript، OCaml، #F یا Haskell همگی دارای پشتیبانی خوبی از سام تایپ ها می باشند.</p>
-
 <p>برای اینکه بدانید داستان از چه قرار است، باید کمی برگردیم به عقب و یک سری از ساختارهای موجود در زبان C را با هم مررو کنیم.</p>
-
-<p><a name="Union ها در زبان C"></a><a name="c-union"></a></p>
-
-<h2 id="union-ها-در-زبان-c">Union ها در زبان C</h2>
-
+<h2 id="union-ها-در-زبان-c"><a name="Union ها در زبان C"></a><a name="c-union"></a>
+Union ها در زبان C</h2>
 <p>union یکی از قدرتمند‌ترین و در عین حال خطرناک ترین قابلیت‌‌ها در زبان C است! تعریف یک union در زبان C دقیقا مانند تعریف کردن یک struct است:</p>
 <div class="highlight"><pre class="chroma"><code class="language-C" data-lang="C"><span class="k">typedef</span> <span class="k">union</span> <span class="p">{</span>
     <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">;</span>
     <span class="kt">int</span>   <span class="n">age</span><span class="p">;</span>
     <span class="kt">int</span>   <span class="n">weight</span><span class="p">;</span>
     <span class="kt">int</span>   <span class="n">height</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">PersonInfo</span><span class="p">;</span></code></pre></div>
-<p>اما union چند فرق اساسی با struct دارد:</p>
-
+<span class="p">}</span> <span class="n">PersonInfo</span><span class="p">;</span>
+</code></pre></div><p>اما union چند فرق اساسی با struct دارد:</p>
 <ul>
 <li>در هر لحظه، فقط یکی از فیلدهای موجود در union می تواند فعال باشد و مورد استفاده قرار گیرد!</li>
 <li>فضای موجود در union به صورت اشتراکی بین فیلدهایش استفاده خواهد شد.</li>
 <li>سایز یک union برابر است با سایز بزرگ‌ترین تایپ ای که در آن وجود دارد.</li>
 </ul>
-
 <p>یعنی سایز union در مثال بالا برابر است با سایز char* که بزرگ‌ترین فیلد union است: 8 بایت! در حالی که اگر به صورت struct تعریف‌اش می‌کردیم، سایز برابر بود با: 8+4+4+4 = 20 به اضافه‌ی 4 بایت برای padding.</p>
-
 <p>همانطور که می‌بینید در زمان‌هایی که بین چندین حالت، فقط نیاز به یکی از آن حالات داریم، استفاده از union ها می‌تواند بسیار در مصرف حافظه صرفه جویی کند!</p>
-
 <p>«صرفه جویی در مصرف حافظه» چیزی است که نظر بیشتر برنامه‌نویسان را به خود جلب می‌کند؛ ولی همین قضیه باعث می‌شود که به نکته‌ی بسیار مهم‌تری توجه کافی نکنند! این نکته‌ی مهم چیست:</p>
-
 <p>ما می‌خواستیم داده‌ای را راجع به یک شخص بیان کنیم. فرضا بگوییم اسم او چیست؛ یا سن او چقدر است؛ یا قد او چند سانت است؛ اما برای بیان این داده‌ها باید با تایپ‌های مختلفی سر و کله می‌زدیم. مثلا اسم از تایپ رشته‌ایست، یا قد از تایپ عددی است. اما با کمک union بالا، ما می توانیم تمام این داده‌ها را با تایپ PersonInfo ابراز کنیم! یعنی ما یک تایپ با اسم PersonInfo ساختیم که قابلیت این را دارد تا با توجه به نیاز ما، حالت یک رشته یا عدد یا هر چیز دیگری را به خود بگیرد! همین یک قضیه به تنهایی درهای زیادی را به روی شما باز خواهد کرد!</p>
-
 <p>کاری که یک Union می‌تواند برای تایپ ها انجام دهد (و در کل سام تایپ ها)، مانند کاری است که Docker برای برنامه‌ها انجام می‌دهد! اگر از بیرون نگاه کنید تایپ ما یک هویت واحد دارد، ولی از داخل می‌تواند به شیوه‌ی های مختلفی بیان شود. با سام تایپ ها می‌توان خلا موجود در بین مفاهیمی مثل Inheritance و Interface و Generic را پر کرد! (در آینده و در یک مطلب مجزا این موضوع را بیشتر برای‌تان شرح خواهم داد). فعلا همین قدر بدانید که Sum Type ها از جمله‌ی مهم ترین مفاهیم در مبحث تایپ سیستم ها می‌باشند!</p>
-
 <p>تا اینجا با دلیل قدرت‌مند بودن union ها آشنا شدیم؛ اما چرا گفتیم که union ها بسیار خطرناک هستند؟ در بخش قبل گفتیم که فضای موجود در یک union به طور اشتراکی توسط فیلدهایش استفاده می‌شود. یعنی در union بالا اگر به فیلد age مقدار بدهیم، مقدار موجود در فیلدهای دیگر مثل height  یا  weight را بازنویسی یا overwrite خواهد کرد! اگر در آن لحظه بخواهیم به فیلدهای height یا  weight دسترسی داشته باشیم، با داده‌ای غلط و درهم و برهم مواجه خواهیم شد!</p>
-
 <p>هیچ راهی هم نداریم که بتوانیم از یک union سوال کنیم در حال حاضر کدام یک از فیلدهایش فعال است. یعنی تنها راه این است که خودمان تمام دسترسی هایی که به فیلدهایش انجام می‌دهیم را به ذهن بسپاریم و حواس‌مان باشد که به اشتباه فیلدی را صدا نزنیم که غیر فعال است. این موضوع باعث به وجود آمدن خطاهای بسیار زیاد خواهد شد. خوشبختانه برنامه‌نویسان C راه حلی برای این مورد پیدا کرده‌اند&hellip; فعلا این را در ذهن نگه دارید تا پایین‌تر به آن برگردیم&hellip;</p>
-
-<p><a name="Enum ها در زبان C"></a><a name="c-enum"></a></p>
-
-<h2 id="enum-ها-در-زبان-c">Enum ها در زبان C</h2>
-
+<h2 id="enum-ها-در-زبان-c"><a name="Enum ها در زبان C"></a><a name="c-enum"></a>
+Enum ها در زبان C</h2>
 <p>با enum می‌توانید تعدادی «ثابتِ عددی» که با یکدیگر دارای ارتباط منطقی هستند را در کنار هم گرد آورید! همچنین می توانید برای هر کدام از این ثابت‌های عددی یک اسم تعیین کنید تا کدهای‌تان با معنی‌تر شوند.</p>
-
 <p>مثلا به جای اینکه «روز هفته» را با اعداد ۱ یا ۲ یا ۳ یا &hellip; تعریف کنید، می توانید به شکل زیر از enum استفاده کنید تا کدهای‌تان تمیزتر و بامعنی‌تر شود:</p>
 <div class="highlight"><pre class="chroma"><code class="language-C" data-lang="C"><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span> 
     <span class="n">Sunday</span><span class="p">,</span>
@@ -334,33 +264,25 @@ A ∪ B = { x, y, 3, 4, 5 }</code></pre></div>
 <span class="p">}</span> <span class="n">WeekDay</span><span class="p">;</span>
 
 
-<span class="n">WeekDay</span> <span class="n">day</span> <span class="o">=</span> <span class="n">Monday</span><span class="p">;</span></code></pre></div>
-<p>مخصوصا وقتی می‌خواهید در کدهای‌تان مقادیری برای Flag ها یا Status Code ها تعریف کنید، استفاده از enum ها توصیه می‌شود.</p>
-
+<span class="n">WeekDay</span> <span class="n">day</span> <span class="o">=</span> <span class="n">Monday</span><span class="p">;</span>
+</code></pre></div><p>مخصوصا وقتی می‌خواهید در کدهای‌تان مقادیری برای Flag ها یا Status Code ها تعریف کنید، استفاده از enum ها توصیه می‌شود.</p>
 <p>ویژگی‌های enum :</p>
-
 <ul>
 <li>هر تعداد ثابت که دوست داشته باشید می‌توانید در یک enum تعریف کنید، ولی در هر لحظه فقط یکی از آن‌ها قابل انتخاب شدن خواهد بود.</li>
 <li>ثابت‌ها به ترتیب تعریف شدن‌شان، به طور اتوماتیک مترادف با عدد 0 تا n خواهند شد.</li>
 <li>تایپ تمام این ثابت‌ها برابر با int است.</li>
 <li>سایز کلی یک enum برابر با سایز تایپ int است (معمولا 4 بایت). فرقی هم ندارد که چند ثابت در آن تعریف کرده باشید.</li>
 </ul>
-
 <p>enum ها در زبان‌های دیگری مانند C++ یا Java یا C# هم کم و بیش همین ویژگی‌ها را دارند (هر کدام مقداری قابلیت‌های مختلف به enum ها اضافه کرده‌اند، ولی اساس کارشان یک‌ایست)</p>
-
-<p><a name="Tagged Union در زبان C"></a><a name="c-tagged-union"></a></p>
-
-<h2 id="tagged-union-در-زبان-c">Tagged Union در زبان C</h2>
-
+<h2 id="tagged-union-در-زبان-c"><a name="Tagged Union در زبان C"></a><a name="c-tagged-union"></a>
+Tagged Union در زبان C</h2>
 <p>در بخشی که union ها را توضیح دادیم، مشکل اساسی آن‌ها را نیز بیان کردیم؛ همچنین گفتیم که برنامه‌نویسان C راه حلی برای دور زدن این مشکل پیدا کرده‌اند. این راه حل به شرح زیر است:</p>
-
 <ul>
 <li>union مد نظرمان را درون یک struct بسته‌بندی می‌کنیم.</li>
 <li>درون آن struct یک فیلد اضافه با نام tag در کنار union قرار می‌دهیم. با این فیلد تعیین می‌کنیم که کدام یک از عناصر union در آن لحظه فعال است.</li>
 <li>هر بار که بخواهیم عنصری از union را مقداردهی کنیم، باید مقدار tag را هم به تناسب آن تغییر دهیم.</li>
 <li>و هر بار که بخواهیم عنصری از union را بخوانیم، ابتدا باید فیلد tag را چک کنیم تا بفهمیم کدام یک از عناصر union در آن لحظه فعال است.</li>
 </ul>
-
 <p>مثال: فرض کنید می‌خواهیم جوابی که یک سرور ممکن است برای ما ارسال کند را به شکل یک تایپ بیان کنیم. اما این سرور به چندین مدل مختلف به ما جواب خواهد داد؛ گاهی اوقات یک عدد را به عنوان Status Code برمی‌گرداند، و گاهی اوقات هم یک پیغام متنی را برای‌مان می‌فرستد. قصد داریم تایپی تعریف کنیم که بتواند با توجه به شرایط مختلف، هر دوی این حالات را پوشش دهد:</p>
 <div class="highlight"><pre class="chroma"><code class="language-C" data-lang="C"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span><span class="cp"></span>
@@ -383,15 +305,16 @@ A ∪ B = { x, y, 3, 4, 5 }</code></pre></div>
     <span class="n">info</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">statusCode</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span>
     
     <span class="k">if</span> <span class="p">(</span><span class="n">info</span><span class="p">.</span><span class="n">tag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;This is your status code: %d </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">info</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">statusCode</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;This is your status code: %d </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">info</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">statusCode</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">info</span><span class="p">.</span><span class="n">tag</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;This is your message: %s </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">info</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">message</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;This is your message: %s </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">info</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">message</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-<p>در مثال بالا tag با تایپ short تعریف شده که یک تایپ عددی است. یعنی باید مقادیری مثل ۱ یا ۲ یا ۳ &hellip; را به آن نسبت دهیم که بسیار شبهه برانگیز خواهد بود. برای این منظور، خیلی از برنامه‌نویسان C فیلد tag را به شکل یک enum تعریف می کنند تا کدهای‌شان معنی دار شود:</p>
+<span class="p">}</span>
+
+</code></pre></div><p>در مثال بالا tag با تایپ short تعریف شده که یک تایپ عددی است. یعنی باید مقادیری مثل ۱ یا ۲ یا ۳ &hellip; را به آن نسبت دهیم که بسیار شبهه برانگیز خواهد بود. برای این منظور، خیلی از برنامه‌نویسان C فیلد tag را به شکل یک enum تعریف می کنند تا کدهای‌شان معنی دار شود:</p>
 <div class="highlight"><pre class="chroma"><code class="language-C" data-lang="C"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span><span class="cp"></span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
@@ -416,80 +339,61 @@ A ∪ B = { x, y, 3, 4, 5 }</code></pre></div>
     <span class="n">info</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">statusCode</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span>
     
     <span class="k">if</span> <span class="p">(</span><span class="n">info</span><span class="p">.</span><span class="n">tag</span> <span class="o">==</span> <span class="n">Data_StatusCode</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;This is your status code: %d </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">info</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">statusCode</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;This is your status code: %d </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">info</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">statusCode</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">info</span><span class="p">.</span><span class="n">tag</span> <span class="o">==</span> <span class="n">Data_Message</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;This is your message: %s </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">info</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">message</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;This is your message: %s </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">info</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">message</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-<p>این راه حل در بین برنامه نویسان C تبدیل به یک «عُرف» شده است. به union هایی که با این روش تعریف می‌شود Tagged Union می‌گویند. اما با تمام این اوصاف، هنوز هم هیچ امنیتی در کار نیست؛ یعنی تایپ سیستم هیچ چیزی از این راه حل نمی‌داند و اشتباه برنامه‌نویس در سِت کردن درست و به موقع tag، می تواند کل برنامه را با خطا مواجه کند.</p>
-
-<p><a name="تعریف Sum Type در زبان های مدرن"></a><a name="sum-types-in-modern-pl"></a></p>
-
-<h2 id="تعریف-sum-type-در-زبان-های-مدرن">تعریف Sum Type در زبان های مدرن</h2>
-
+<span class="p">}</span>
+</code></pre></div><p>این راه حل در بین برنامه نویسان C تبدیل به یک «عُرف» شده است. به union هایی که با این روش تعریف می‌شود Tagged Union می‌گویند. اما با تمام این اوصاف، هنوز هم هیچ امنیتی در کار نیست؛ یعنی تایپ سیستم هیچ چیزی از این راه حل نمی‌داند و اشتباه برنامه‌نویس در سِت کردن درست و به موقع tag، می تواند کل برنامه را با خطا مواجه کند.</p>
+<h2 id="تعریف-sum-type-در-زبان-های-مدرن"><a name="تعریف Sum Type در زبان های مدرن"></a><a name="sum-types-in-modern-pl"></a>
+تعریف Sum Type در زبان های مدرن</h2>
 <p>همه‌ی این توضیحات را دادم تا برسم به این:</p>
-
 <p>سام تایپ ها با Tagged Union قابل تعریف شدن هستند. حتی خیلی وقت‌ها اسم Sum Type مترادف با Tagged Union بیان می‌شود! همانطور که می‌بینید Tagged Union ها در زبان C نزدیک‌ترین چیزی هستند که شما می‌توانید در زبان‌های متداول‌تر برنامه‌نویسی داشته باشید.</p>
-
 <p>وقتی گفتیم زبان‌هایی مانند Haskell یا Rust یا Swift از سام تایپ ها پشتیبانی می کنند، در واقع داستان این است که همین Tagged Union هایی که اینجا دیدید را به طور سازمان یافته و با سینتکس ای مناسب در بطن تایپ سیستم خود پیاده سازی کرده اند.</p>
-
 <p>مثلا تایپ Info که در بالاتر تعریف کردیم، در Haskell به این شکل خواهد بود:</p>
-<div class="highlight"><pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="kr">data</span> <span class="kt">Info</span> <span class="ow">=</span> <span class="kt">Status</span> <span class="kt">Int</span> <span class="o">|</span> <span class="kt">Message</span> <span class="kt">String</span></code></pre></div>
-<p>یا در Swift به این شکل خواهد بود:</p>
+<div class="highlight"><pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="kr">data</span> <span class="kt">Info</span> <span class="ow">=</span> <span class="kt">Status</span> <span class="kt">Int</span> <span class="o">|</span> <span class="kt">Message</span> <span class="kt">String</span>
+</code></pre></div><p>یا در Swift به این شکل خواهد بود:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Swift" data-lang="Swift"><span class="kd">enum</span> <span class="nc">Info</span> <span class="p">{</span>
   <span class="k">case</span> <span class="n">Status</span><span class="p">(</span><span class="nb">Int</span><span class="p">)</span>
   <span class="k">case</span> <span class="n">Message</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
-<span class="p">}</span></code></pre></div>
-<p>یا در Rust به این شکل خواهد بود:</p>
+<span class="p">}</span>
+</code></pre></div><p>یا در Rust به این شکل خواهد بود:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Rust" data-lang="Rust"><span class="k">enum</span> <span class="nc">Info</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">    </span><span class="n">Status</span><span class="p">(</span><span class="kt">i32</span><span class="p">),</span><span class="w">
 </span><span class="w">    </span><span class="n">Message</span><span class="p">(</span><span class="nb">String</span><span class="p">),</span><span class="w">
-</span><span class="w"></span><span class="p">}</span></code></pre></div>
-<p>دقت کنید طراحان Rust و Swift برای تعریف سام تایپ ها از کلید واژه‌ی enum استفاده کرده اند؛ ولی این enum برابر با آن چیزی نیست که در C یا C++ یا Java می‌شناسید. enum در Rust و Swift در واقع مترادف با ورژنِ مدرن‌ترِ Tagged Union است!</p>
-
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div><p>دقت کنید طراحان Rust و Swift برای تعریف سام تایپ ها از کلید واژه‌ی enum استفاده کرده اند؛ ولی این enum برابر با آن چیزی نیست که در C یا C++ یا Java می‌شناسید. enum در Rust و Swift در واقع مترادف با ورژنِ مدرن‌ترِ Tagged Union است!</p>
 <p>غالبا پیش از استفاده از سام تایپ‌ها، ابتدا نیاز پیدا خواهید کرد مقداری که در حال حاضر فعال است را شناسایی کنید. در زبان‌هایی مانند C این کار توسط if یا select یا switch انجام می‌پذیرد. و شما با توجه به اینکه کدام یکی از آن مقادیر فعال هستند، عکس العمل مناسب را نشان خواهید داد. (از روی فیلد tag)</p>
-
 <p>در زبان‌های برنامه نویسی مدرن‌تر و به خصوص زبان‌های فانکشنال، قابلیت «تطبیق الگو» یا Pattern Matching در زبان حضور دارد که شما را از هرچه if و switch و امثال‌شان است خلاص می‌کند و کدهایی تمیزتر و قابل فهم تر تولید می‌نماید. سام تایپ ها و مکانیزم تطبیق الگو، به نوعی لازم و ملزوم یکدیگر هستند.</p>
-
 <p>تا اینجای کار چون استفاده‌ی سام تایپ ها در دنیای واقعی را مشاهده نکرده‌اید، شاید هنوز قدرت سام تایپ ها را بدرستی درک نکرده باشید؛ در بخش بعد یک نمونه‌ی واقعی از سام تایپ ها را باهم مرور می‌کنیم&hellip;</p>
-
 <p><a name="تایپ Option"></a><a name="option-type"></a></p>
-
 <h2 id="تایپ-option">تایپ Option</h2>
-
 <p>این تایپ از شناخته شده ترین و پرکاربرد ترین سام تایپ‌هایی است که در اکثر زبان‌های برنامه‌نویسی حضور دارد. در بعضی زبان‌ها اسمش Option است، در بعضی دیگر با اسم Optional شناخته می‌شود، و گاهی هم آن را Maybe صدا می‌زنند.</p>
-
 <p>شمایل این تایپ در زبان Swift اینگونه است:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Swift" data-lang="Swift"><span class="kd">enum</span> <span class="nc">Optional</span><span class="p">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre class="chroma"><code class="language-Swift" data-lang="Swift"><span class="kd">enum</span> <span class="nc">Optional</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
   <span class="k">case</span> <span class="n">some</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
   <span class="k">case</span> <span class="kr">none</span>
-<span class="p">}</span></code></pre></div>
-<p>یا فرضا در زبان Rust اینگونه تعریف شده است:</p>
+<span class="p">}</span>
+</code></pre></div><p>یا فرضا در زبان Rust اینگونه تعریف شده است:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Rust" data-lang="Rust"><span class="k">pub</span><span class="w"> </span><span class="k">enum</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">    </span><span class="nb">None</span><span class="p">,</span><span class="w">
 </span><span class="w">    </span><span class="nb">Some</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="w">
-</span><span class="w"></span><span class="p">}</span></code></pre></div>
-<p>تعریف بالا یعنی Option دو حالت را ارائه خواهد که در هر لحظه فقط یکی از حالات می‌تواند وجود داشته باشد:</p>
-
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div><p>تعریف بالا یعنی Option دو حالت را ارائه خواهد که در هر لحظه فقط یکی از حالات می‌تواند وجود داشته باشد:</p>
 <ul>
 <li>حالت None که یعنی هیچ چیزی وجود ندارد.</li>
 <li>حالت Some که یعنی یک مقدار که دارای تایپِ T است در دسترس است و توسط Some کپسوله شده است.</li>
 </ul>
-
 <p>حالا چنین چیزی در چه زمان‌هایی ممکن است بدرد بخورد؟ تایپ Option بیشتر برای هندل کردن خطاهایی که ممکن است به دلیل وجود یا عدم وجود یک داده اتفاق بیفتد کاربرد پیدا می‌کند. خیلی از مواقع توابعی دارید که در صورت موفقیت، مقدار مناسبی را بر‌میگردانند؛ و در صورت ناموفق بودن، ایجاد خطا خواهند کرد.</p>
-
 <p>مثلا تابعی دارید که دو عدد را به عنوان آرگومان می‌پذیرد، و نتیجه‌ی تقسیم آن دو عدد بر یکدیگر را برمیگرداند. خطایی که ممکن است پیش بیاید این است که اعداد بر صفر تقسیم نخواهند شد بنابراین پارامتر دوم نمی‌تواند صفر باشد. پس یکی از دو اتفاق زیر ممکن است در این تابع صورت بگیرد (و شما مطمئن نیستید کدام!):</p>
-
 <ul>
 <li>یا رقم دوم صفر خواهد بود. که در این صورت تابع خطا خواهد داشت.</li>
 <li>یا تقسیم بدون مشکل انجام می‌شود و نتیجه به درستی برگشت داده خواهد شد.</li>
 </ul>
-
 <p>حالا با این توضیحات، تایپ خروجی تابع را باید چگونه انتخاب کنیم؟ در حالت عادی، میتوانیم بگوییم که خروجی این تابع یک مقدار اعشاری است. اما می‌دانیم که همیشه اینطور نخواهد بود. این حس «مطمئن نبودن» را چگونه می‌خواهید برای تایپ سیستم توضیح دهید؟</p>
-
 <p>اینجاست که شما می‌توانید از تایپ Option استفاده کنید! یعنی تایپِ خروجی این تابع را از نوع Option انتخاب می‌کنید و با اینکار به کامپایلر می‌گویید که این تابع هم ممکن است خطا بدهد و هم ممکن است بدون ایراد کار کند. تعریف چنین تابعی در زبانی مثل Rust اینگونه است:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Rust" data-lang="Rust"><span class="k">fn</span> <span class="nf">divide</span><span class="p">(</span><span class="n">a</span>: <span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="n">b</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Option</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -497,8 +401,8 @@ A ∪ B = { x, y, 3, 4, 5 }</code></pre></div>
 </span><span class="c1"></span><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">    </span><span class="c1">// Wrap division result in Some(), and return it.
 </span><span class="c1"></span><span class="w">    </span><span class="p">}</span><span class="w">
-</span><span class="w"></span><span class="p">}</span></code></pre></div>
-<p>و در قسمت‌های دیگر کدهای خود می‌توانیم به این شکل از این تابع استفاده کنیم:</p>
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div><p>و در قسمت‌های دیگر کدهای خود می‌توانیم به این شکل از این تابع استفاده کنیم:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Rust" data-lang="Rust"><span class="k">match</span><span class="w"> </span><span class="n">divide</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">  </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">    </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;error: could not do this division!&#34;</span><span class="p">)</span><span class="w">
@@ -506,13 +410,10 @@ A ∪ B = { x, y, 3, 4, 5 }</code></pre></div>
 </span><span class="w">  </span><span class="nb">Some</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">      </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;result is: {}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w">
 </span><span class="w">  </span><span class="p">},</span><span class="w">
-</span><span class="w"></span><span class="p">}</span></code></pre></div>
-<p>اگر تابع بالا را اجرا کنید، برنامه بدون اینکه وسط کار کرش کند، براحتی خطای صورت گرفته را متوجه می‌شود و توضیح مناسبی برای آن چاپ خواهد کرد.  ده‌ها مورد دیگر از این موارد وجود دارند که شما از وجود یک مقدار نهایی اطمینان کافی ندارید و می‌توانید با استفاده از تایپ Option خیال خود را از وقوع اتفاقات نامطلوب در چنین شرایطی راحت کنید.</p>
-
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div><p>اگر تابع بالا را اجرا کنید، برنامه بدون اینکه وسط کار کرش کند، براحتی خطای صورت گرفته را متوجه می‌شود و توضیح مناسبی برای آن چاپ خواهد کرد.  ده‌ها مورد دیگر از این موارد وجود دارند که شما از وجود یک مقدار نهایی اطمینان کافی ندارید و می‌توانید با استفاده از تایپ Option خیال خود را از وقوع اتفاقات نامطلوب در چنین شرایطی راحت کنید.</p>
 <p><a name="end"></a><a name="سخن آخر"></a></p>
-
 <h2 id="سخن-آخر">سخن آخر</h2>
-
 <p>دیتا تایپ‌های جبری، اساسی و جذاب هستند! وجود پشتیبانی مناسب از آن‌ها در یک زبان برنامه‌نویسی، می‌تواند امنیت کدهایتان را بسیار بالا ببرد. فرضا همین تایپ Option که بالاتر درباره‌اش توضیح دادیم، می‌تواند شما را از خطاهای مربوط به مقادیر null خلاص کند! در بین زبان‌های مختلف اشتیاق مناسبی برای پشتیبانی بهتر از این تایپ‌ها وجود دارد. فرضا جاوا ۸ همین تایپ Optional را به زبان اضافه کرد. یا مثلا TypeScript هم تا حدی دیتا تایپ‌های جبری را در ورژن ۲ به زبان اضافه کرده تا شما در  جاوا اسکریپت هم بتوانید به مزایای این تایپ‌ها دسترسی داشته باشد. از همین رو مطالعه‌ی دیتا تایپ‌های جبری برای تمام برنامه‌نویسان سودمند خواهد بود.</p>
 
 </div>
